@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바이브코딩 아이디어 모음</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>바이브코딩 아이디어 모음</h1>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">아이디어</a></li>
+                    <li><a href="#" id="login-button">로그인</a></li>
+                    <li><a href="#" id="signup-button">회원가입</a></li>
+                    <li><a href="#" id="my-page" class="hidden">내 북마크</a></li>
+                    <li><a href="#" id="logout-button" class="hidden">로그아웃</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="ideas-container" id="ideas-list">
+            <!-- Ideas will be dynamically loaded here -->
+        </section>
+    </main>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">로그인</button>
+                <button class="auth-tab" data-tab="signup">회원가입</button>
+            </div>
+            
+            <div class="auth-form" id="login-form">
+                <h2>로그인</h2>
+                <form id="login-form-element">
+                    <div class="form-group">
+                        <label for="login-username">아이디</label>
+                        <input type="text" id="login-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">비밀번호</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <div class="form-group remember-me">
+                        <input type="checkbox" id="remember-username">
+                        <label for="remember-username">아이디 저장하기</label>
+                    </div>
+                    <button type="submit" class="btn primary">로그인</button>
+                </form>
+            </div>
+            
+            <div class="auth-form hidden" id="signup-form">
+                <h2>회원가입</h2>
+                <form id="signup-form-element">
+                    <div class="form-group">
+                        <label for="signup-username">아이디</label>
+                        <input type="text" id="signup-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">비밀번호</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password-confirm">비밀번호 확인</label>
+                        <input type="password" id="signup-password-confirm" required>
+                    </div>
+                    <button type="submit" class="btn primary">회원가입</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Idea Detail Modal -->
+    <div class="modal" id="idea-detail-modal">
+        <div class="modal-content detail-modal">
+            <span class="close-button">&times;</span>
+            <div class="idea-detail">
+                <h2 id="detail-title">아이디어 제목</h2>
+                <div class="tag-container">
+                    <span class="tag" id="detail-tag">태그</span>
+                </div>
+                <div class="idea-info">
+                    <div class="info-section">
+                        <h3>요약</h3>
+                        <p id="detail-summary">아이디어 요약</p>
+                    </div>
+                    <div class="info-section">
+                        <h3>주요 기능</h3>
+                        <p id="detail-features">주요 기능 설명</p>
+                    </div>
+                    <div class="info-section">
+                        <h3>타겟</h3>
+                        <p id="detail-target">타겟 고객</p>
+                    </div>
+                    <div class="info-section">
+                        <h3>수익모델</h3>
+                        <p id="detail-revenue">수익모델 설명</p>
+                    </div>
+                    <div class="info-section">
+                        <h3>난이도</h3>
+                        <p id="detail-difficulty">개발 난이도</p>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn primary" id="ai-generation-button">AI에게 만들어달라!</button>
+                    <button class="btn secondary" id="bookmark-button"><i class="far fa-bookmark"></i> 북마크</button>
+                </div>
+                <div class="comments-section">
+                    <h3>댓글</h3>
+                    <div class="comment-form">
+                        <textarea id="comment-input" placeholder="댓글을 작성하세요..." disabled></textarea>
+                        <button class="btn primary" id="submit-comment" disabled>등록</button>
+                    </div>
+                    <div class="comments-list" id="comments-container">
+                        <!-- Comments will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

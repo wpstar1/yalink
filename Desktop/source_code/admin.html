@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 급등주 분석머신 - 관리자 페이지</title>
+    
+    <!-- SEO 메타태그 -->
+    <meta name="description" content="AI 급등주 분석머신 관리자 페이지 - 상담 신청 관리 시스템">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    
+    <!-- 오픈그래프 메타태그 -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI 급등주 분석머신 - 관리자 페이지">
+    <meta property="og:description" content="AI 급등주 분석머신 관리자 페이지">
+    <meta property="og:image" content="https://i.ibb.co/6J8Lgcts/Image-fx.png">
+    
+    <!-- 추가 SEO 태그 -->
+    <meta name="theme-color" content="#1a1a1a">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #1a1a1a;
+            --color-secondary: #ffffff;
+            --color-accent: #00d4aa;
+            --color-danger: #ff4757;
+            --color-success: #2ed573;
+            --color-warning: #ffa502;
+            --color-background: #f8f9fa;
+            --color-surface: #ffffff;
+            --color-border: #e5e5e5;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --radius: 0.5rem;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--color-primary);
+            color: var(--color-secondary);
+            padding: var(--space-sm) var(--space-lg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+
+        .logout-btn {
+            background: var(--color-danger);
+            color: var(--color-secondary);
+            border: none;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn:hover {
+            background: #e74c3c;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: var(--color-background);
+        }
+
+        .login-box {
+            background: var(--color-surface);
+            padding: var(--space-xl);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-title {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            color: var(--color-primary);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+            color: var(--color-text);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 1px solid var(--color-border);
+            border-radius: calc(var(--radius) / 2);
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.2);
+        }
+
+        .login-btn {
+            width: 100%;
+            background: var(--color-accent);
+            color: var(--color-secondary);
+            padding: var(--space-sm);
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #00b894;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .dashboard-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .stat-card {
+            background: var(--color-surface);
+            padding: var(--space-md);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+
+        .stat-label {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        .consultations-container {
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .consultations-header {
+            background: var(--color-primary);
+            color: var(--color-secondary);
+            padding: var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .filter-btn {
+            background: transparent;
+            color: var(--color-secondary);
+            border: 1px solid var(--color-secondary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: calc(var(--radius) / 2);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        .consultation-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .consultation-item {
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--space-md);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .consultation-item:hover {
+            background: var(--color-background);
+        }
+
+        .consultation-item:last-child {
+            border-bottom: none;
+        }
+
+        .consultation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-xs);
+        }
+
+        .consultation-name {
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        .consultation-date {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        .consultation-info {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xs);
+        }
+
+        .consultation-phone {
+            color: var(--color-text);
+        }
+
+        .consultation-age {
+            color: var(--color-text-light);
+        }
+
+        .consultation-status {
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: calc(var(--radius) / 2);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .status-pending {
+            background: var(--color-warning);
+            color: var(--color-secondary);
+        }
+
+        .status-processing {
+            background: var(--color-accent);
+            color: var(--color-secondary);
+        }
+
+        .status-completed {
+            background: var(--color-success);
+            color: var(--color-secondary);
+        }
+
+        .consultation-concerns {
+            margin-top: var(--space-xs);
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--color-surface);
+            margin: 5% auto;
+            padding: var(--space-lg);
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text-light);
+        }
+
+        .close-btn:hover {
+            color: var(--color-danger);
+        }
+
+        .detail-section {
+            margin-bottom: var(--space-md);
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .detail-value {
+            color: var(--color-text);
+            margin-bottom: var(--space-sm);
+        }
+
+        .concerns-list {
+            list-style: none;
+            padding-left: var(--space-sm);
+        }
+
+        .concerns-list li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .concerns-list li:before {
+            content: "• ";
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: flex-end;
+            margin-top: var(--space-lg);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .btn {
+            padding: var(--space-xs) var(--space-sm);
+            border: none;
+            border-radius: calc(var(--radius) / 2);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-secondary);
+        }
+
+        .btn-primary:hover {
+            background: #00b894;
+        }
+
+        .btn-warning {
+            background: var(--color-warning);
+            color: var(--color-secondary);
+        }
+
+        .btn-warning:hover {
+            background: #ff6348;
+        }
+
+        .btn-danger {
+            background: var(--color-danger);
+            color: var(--color-secondary);
+        }
+
+        .btn-danger:hover {
+            background: #e74c3c;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: var(--space-xl);
+            color: var(--color-text-light);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            color: var(--color-border);
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: var(--space-sm);
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .consultation-info {
+                flex-direction: column;
+                gap: var(--space-xs);
+            }
+            
+            .modal-content {
+                margin: 2% auto;
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 로그인 화면 -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-box">
+            <h2 class="login-title">
+                <i class="fas fa-shield-alt"></i> 관리자 로그인
+            </h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">비밀번호</label>
+                    <input type="password" class="form-input" id="password" placeholder="관리자 비밀번호를 입력하세요" required>
+                </div>
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> 로그인
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 관리자 대시보드 -->
+    <div id="adminDashboard" style="display: none;">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i> AI 급등주 분석머신 - 관리자
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> 로그아웃
+                </button>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">상담 신청 관리</h1>
+                <div>
+                    <span id="currentTime"></span>
+                </div>
+            </div>
+
+            <!-- 통계 카드 -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalConsultations">0</div>
+                    <div class="stat-label">총 상담 신청</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pendingConsultations">0</div>
+                    <div class="stat-label">미처리</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="processingConsultations">0</div>
+                    <div class="stat-label">처리중</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="completedConsultations">0</div>
+                    <div class="stat-label">완료</div>
+                </div>
+            </div>
+
+            <!-- 상담 신청 목록 -->
+            <div class="consultations-container">
+                <div class="consultations-header">
+                    <h3><i class="fas fa-list"></i> 상담 신청 목록</h3>
+                    <div class="filter-controls">
+                        <button class="filter-btn active" data-filter="all">전체</button>
+                        <button class="filter-btn" data-filter="미처리">미처리</button>
+                        <button class="filter-btn" data-filter="처리중">처리중</button>
+                        <button class="filter-btn" data-filter="완료">완료</button>
+                    </div>
+                </div>
+                <div class="consultation-list" id="consultationList">
+                    <!-- 상담 신청 목록이 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 상담 신청 상세 모달 -->
+    <div id="consultationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">상담 신청 상세</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modalContent">
+                <!-- 상담 신청 상세 내용이 여기에 표시됩니다 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 관리자 비밀번호 (실제 운영시에는 서버에서 처리해야 함)
+        const ADMIN_PASSWORD = 'admin123';
+        
+        let consultations = [];
+        let currentFilter = 'all';
+
+        // 시간 업데이트
+        function updateTime() {
+            const now = new Date();
+            const timeElement = document.getElementById('currentTime');
+            if (timeElement) {
+                timeElement.textContent = now.toLocaleString('ko-KR');
+            }
+        }
+        setInterval(updateTime, 1000);
+
+        // 로그인 처리
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+                loadConsultations();
+                updateTime();
+            } else {
+                alert('비밀번호가 올바르지 않습니다.');
+            }
+        });
+
+        // 로그아웃
+        function logout() {
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('adminDashboard').style.display = 'none';
+            document.getElementById('password').value = '';
+        }
+
+        // 상담 신청 데이터 로드
+        function loadConsultations() {
+            consultations = JSON.parse(localStorage.getItem('consultations') || '[]');
+            updateStats();
+            renderConsultations();
+        }
+
+        // 통계 업데이트
+        function updateStats() {
+            const total = consultations.length;
+            const pending = consultations.filter(c => c.status === '미처리').length;
+            const processing = consultations.filter(c => c.status === '처리중').length;
+            const completed = consultations.filter(c => c.status === '완료').length;
+
+            document.getElementById('totalConsultations').textContent = total;
+            document.getElementById('pendingConsultations').textContent = pending;
+            document.getElementById('processingConsultations').textContent = processing;
+            document.getElementById('completedConsultations').textContent = completed;
+        }
+
+        // 상담 신청 목록 렌더링
+        function renderConsultations() {
+            const listContainer = document.getElementById('consultationList');
+            
+            let filteredConsultations = consultations;
+            if (currentFilter !== 'all') {
+                filteredConsultations = consultations.filter(c => c.status === currentFilter);
+            }
+            
+            // 최신순으로 정렬
+            filteredConsultations.sort((a, b) => new Date(b.submitDate) - new Date(a.submitDate));
+
+            if (filteredConsultations.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>상담 신청이 없습니다.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            listContainer.innerHTML = filteredConsultations.map(consultation => `
+                <div class="consultation-item" onclick="showConsultationDetail(${consultation.id})">
+                    <div class="consultation-header">
+                        <div class="consultation-name">${consultation.name}</div>
+                        <div class="consultation-date">${new Date(consultation.submitDate).toLocaleString('ko-KR')}</div>
+                    </div>
+                    <div class="consultation-info">
+                        <div class="consultation-phone">${consultation.phone}</div>
+                        <div class="consultation-age">${consultation.age}</div>
+                        <div class="consultation-status status-${consultation.status === '미처리' ? 'pending' : consultation.status === '처리중' ? 'processing' : 'completed'}">
+                            ${consultation.status}
+                        </div>
+                    </div>
+                    ${consultation.concerns.length > 0 ? `
+                        <div class="consultation-concerns">
+                            고민: ${consultation.concerns.join(', ')}
+                        </div>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        // 필터 버튼 이벤트
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderConsultations();
+            });
+        });
+
+        // 상담 신청 상세 보기
+        function showConsultationDetail(id) {
+            const consultation = consultations.find(c => c.id === id);
+            if (!consultation) return;
+
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <div class="detail-section">
+                    <div class="detail-label">이름</div>
+                    <div class="detail-value">${consultation.name}</div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-label">전화번호</div>
+                    <div class="detail-value">${consultation.phone}</div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-label">연령대</div>
+                    <div class="detail-value">${consultation.age}</div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-label">신청일시</div>
+                    <div class="detail-value">${new Date(consultation.submitDate).toLocaleString('ko-KR')}</div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-label">처리 상태</div>
+                    <div class="detail-value">
+                        <span class="consultation-status status-${consultation.status === '미처리' ? 'pending' : consultation.status === '처리중' ? 'processing' : 'completed'}">
+                            ${consultation.status}
+                        </span>
+                    </div>
+                </div>
+                ${consultation.concerns.length > 0 ? `
+                    <div class="detail-section">
+                        <div class="detail-label">금전적 고민</div>
+                        <ul class="concerns-list">
+                            ${consultation.concerns.map(concern => `<li>${concern}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+                ${consultation.message ? `
+                    <div class="detail-section">
+                        <div class="detail-label">남기고 싶은 말</div>
+                        <div class="detail-value">${consultation.message}</div>
+                    </div>
+                ` : ''}
+                <div class="modal-actions">
+                    <button class="btn btn-primary" onclick="updateStatus(${consultation.id}, '처리중')">처리중으로 변경</button>
+                    <button class="btn btn-warning" onclick="updateStatus(${consultation.id}, '완료')">완료 처리</button>
+                    <button class="btn btn-danger" onclick="deleteConsultation(${consultation.id})">삭제</button>
+                </div>
+            `;
+
+            document.getElementById('consultationModal').style.display = 'block';
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById('consultationModal').style.display = 'none';
+        }
+
+        // 상담 신청 상태 업데이트
+        function updateStatus(id, newStatus) {
+            const consultationIndex = consultations.findIndex(c => c.id === id);
+            if (consultationIndex !== -1) {
+                consultations[consultationIndex].status = newStatus;
+                localStorage.setItem('consultations', JSON.stringify(consultations));
+                loadConsultations();
+                closeModal();
+                alert(`상태가 '${newStatus}'로 변경되었습니다.`);
+            }
+        }
+
+        // 상담 신청 삭제
+        function deleteConsultation(id) {
+            if (confirm('이 상담 신청을 삭제하시겠습니까?')) {
+                consultations = consultations.filter(c => c.id !== id);
+                localStorage.setItem('consultations', JSON.stringify(consultations));
+                loadConsultations();
+                closeModal();
+                alert('상담 신청이 삭제되었습니다.');
+            }
+        }
+
+        // 모달 외부 클릭시 닫기
+        window.onclick = function(event) {
+            const modal = document.getElementById('consultationModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,401 @@
+:root {
+    --primary-color: #2d193c;
+    --secondary-color: #4a2a63;
+    --accent-color: #8a4fff;
+    --text-color: #ffffff;
+    --text-secondary: #cccccc;
+    --background-light: #3c2451;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header styles */
+header {
+    background-color: var(--secondary-color);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-left: 20px;
+}
+
+.main-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--accent-color);
+}
+
+.hamburger-menu {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Tag styles for idea cards */
+.tag {
+    background-color: var(--background-light);
+    color: var(--text-color);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+/* Ideas List */
+.ideas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Loading, Error and Empty states */
+.loading, .error, .no-ideas {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--background-light);
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.loading {
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.error {
+    color: #ff6b6b;
+    font-size: 1.1rem;
+}
+
+.no-ideas {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.idea-card {
+    background-color: var(--background-light);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.idea-card:hover {
+    transform: translateY(-5px);
+}
+
+.idea-card .header {
+    padding: 15px;
+    background-color: var(--secondary-color);
+}
+
+.idea-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.idea-card .content {
+    padding: 15px;
+}
+
+.info-item {
+    margin-bottom: 10px;
+}
+
+.info-item h4 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 3px;
+}
+
+.idea-card .actions {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--secondary-color);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: var(--background-light);
+    margin: 50px auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    position: relative;
+}
+
+.detail-modal {
+    max-width: 800px;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Auth styles */
+.auth-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.auth-tab {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.auth-tab.active {
+    border-bottom: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.auth-form {
+    margin-top: 20px;
+}
+
+.auth-form h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-radius: 4px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input {
+    width: auto;
+    margin-right: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.primary {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.secondary {
+    background-color: var(--background-light);
+    color: var(--text-color);
+    border: 1px solid var(--accent-color);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Idea detail styles */
+.idea-detail h2 {
+    margin-bottom: 15px;
+}
+
+.idea-info {
+    margin: 25px 0;
+}
+
+.info-section {
+    margin-bottom: 20px;
+}
+
+.info-section h3 {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* Comments section */
+.comments-section {
+    margin-top: 30px;
+    border-top: 1px solid var(--secondary-color);
+    padding-top: 20px;
+}
+
+.comment-form {
+    margin-bottom: 20px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+.comment-item {
+    background-color: var(--primary-color);
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.comment-author {
+    font-weight: 700;
+}
+
+.comment-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        height: 100vh;
+        background-color: var(--secondary-color);
+        padding: 20px;
+        transition: left 0.3s;
+    }
+
+    .main-nav.active {
+        left: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+    }
+
+    .main-nav li {
+        margin: 15px 0;
+    }
+
+    .tag-filter h2 {
+        font-size: 1.3rem;
+    }
+
+    .ideas-container {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 30px auto;
+        padding: 20px;
+    }
+}

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#2c2c54" />
+  
+  <!-- SEO 메타 태그 -->
+  <title>사이트 소개 - 깃하이라이트 | GitHub 인기 프로젝트 한글 요약 서비스</title>
+  <meta name="description" content="깃하이라이트는 GitHub에서 인기 있는 오픈소스 프로젝트를 한글로 요약하고 코드 예제와 함께 제공하는 서비스입니다. 깃하이라이트가 무엇인지, 왜 만들어졌는지 알아보세요." />
+  <meta name="keywords" content="GitHub, 깃허브, 오픈소스, 코드, 프로그래밍, 개발자, 트렌드, 요약, 한글, 북마크, 서비스 소개" />
+  <meta name="author" content="깃하이라이트" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- 표준 링크 태그 -->
+  <link rel="canonical" href="https://githi.com/about" />
+  <link rel="alternate" hreflang="ko" href="https://githi.com/about" />
+  
+  <!-- 파비콘 설정 -->
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/static/icons/192x192.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/static/icons/192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/static/icons/592x592.png" />
+  
+  <!-- Open Graph 메타 태그 (페이스북, 카카오톡 등) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://githi.com/about" />
+  <meta property="og:title" content="사이트 소개 - 깃하이라이트" />
+  <meta property="og:description" content="깃하이라이트는 GitHub에서 인기 있는 오픈소스 프로젝트를 한글로 요약하고 코드 예제와 함께 제공하는 서비스입니다." />
+  <meta property="og:image" content="https://githi.com/static/icons/592x592.png" />
+  <meta property="og:site_name" content="깃하이라이트" />
+  <meta property="og:locale" content="ko_KR" />
+  
+  <!-- Twitter Card 메타 태그 -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="사이트 소개 - 깃하이라이트" />
+  <meta name="twitter:description" content="깃하이라이트는 GitHub에서 인기 있는 오픈소스 프로젝트를 한글로 요약하고 코드 예제와 함께 제공하는 서비스입니다." />
+  <meta name="twitter:image" content="https://githi.com/static/icons/592x592.png" />
+  
+  <!-- PWA 관련 메타 태그 -->
+  <link rel="manifest" href="/static/manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="깃하이라이트" />
+  
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo-section">
+        <h1><a href="/" class="logo-link"> 깃하이라이트</a></h1>
+      </div>
+      
+      <button class="toggle-menu" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="/about" title="사이트 소개" class="active"><i class="fas fa-info-circle"></i> 소개</a></li>
+          <li><a href="/login" title="로그인"><i class="fas fa-sign-in-alt"></i> 로그인</a></li>
+          <li><a href="/register" class="register-btn" title="회원가입"><i class="fas fa-user-plus"></i> 회원가입</a></li>
+          <li class="mobile-only" id="install-app-menu-item" style="display: none;">
+            <button id="install-button" class="menu-button">
+              <i class="fas fa-download"></i> 앱 설치
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="about-container">
+      <div class="about-card">
+        <h2>깃하이라이트란?</h2>
+        
+        <div class="about-section">
+          <p>깃하이라이트는 GitHub에서 매일 화제가 되는 별점 많은 인기 프로젝트를 소개합니다.<br>
+          매일매일 보다보면 무조건 좋은 아이디어가 떠오릅니다.<br>
+          저도 전세계 개발자들이 이용하는 Git에서 얻은 아이디어로<br>
+          자연어 코딩으로만 프로그램을 10개이상 만들어 수익을 내고 있다면 믿으시겠습니까?<br>
+          정말 머리좋은 사람들은 어떤 프로그램들을 만들까?<br>
+          1,정보공유 2,아이디어 3,실현<br>
+          많은 분들이 좋은 아이디어를 얻어 도움이 되었으면 좋겠습니다.<br>
+
+          <h3>왜 사람들은 깃허브에 코드를 공개로 올릴까?</h3>
+          
+          <h4>1. 포트폴리오/자랑용</h4>
+          <p>"이건 내가 만들었어요!"<br>
+          개발자 실력을 가장 잘 보여주는 수단 = 코드<br>
+          구직, 프리랜서, 컨퍼런스 등에서 큰 무기가 됩니다.</p>
+
+          <h4>2. 스타 받고 명성 얻으려는 목적</h4>
+          <p>GitHub 스타 수는 개발자 세계에서 명성 점수 같은 느낌입니다.<br>
+          스타 많이 받으면:<br>
+          → 유명 개발자가 됩니다<br>
+          → 커뮤니티에서 인정받습니다<br>
+          → 후원, 협찬, 제휴 기회가 생깁니다</p>
+
+          <h4>3. 오픈소스 정신 (커뮤니티 기여)</h4>
+          <p>"나도 남의 코드 보고 배웠으니 나도 공개하자"<br>
+          실력자일수록 이런 마인드가 강합니다.</p>
+
+          <h4>4. 피드백/기여 유도</h4>
+          <p>전 세계 개발자들이 이슈, Pull Request를 통해 기여합니다.<br>
+          나 혼자보다 더 나은 퀄리티가 가능합니다.</p>
+
+          <h4>5. 장기적으로 수익화 가능</h4>
+          <p>무료 오픈소스 + 유료 Pro 버전 전략<br>
+          오픈소스 기반 SaaS, 책, 강의, 후원으로 확장 가능합니다.</p>
+
+          <p>다운받을 땐 출처를 꼭 남겨주세요.</p>
+
+          <h3> 주요 기능</h3>
+          <ul>
+            <li><strong>코드 예시 추출</strong>: 각 프로젝트에서 중요한 코드 예제를 자동으로 추출 </li>
+            <li><strong>북마크 기능</strong>: 관심 있는 프로젝트를 저장하고 나중에 다시 볼 수 있음 (로그인 필요)</li>
+          </ul>
+          
+          <h3> 사용 방법</h3>
+          <ol>
+            <li>매일 업데이트되는 인기 GitHub 프로젝트 목록 확인</li>
+            <li>각 프로젝트의 요약과 주요 기능 읽기</li>
+            <li>회원가입 후 북마크 기능 이용하기</li>
+          </ol>
+          
+          <h3> 앞으로의 계획</h3>
+          <ul>
+            <li>프로그래밍 언어별 필터링 기능</li>
+            <li>사용자 맞춤 추천 시스템</li>
+            <li>더 다양한 소셜 기능 추가</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 깃하이라이트 2025 | <a href="https://github.com" target="_blank">GitHub</a>에서 발견된 보석들</p>
+  </footer>
+  
+  <!-- 위로 가기 버튼 -->
+  <button id="back-to-top" title="맨 위로 이동"><i class="fas fa-arrow-up"></i></button>
+  
+  <script>
+    // 모바일 기기 감지 함수
+    function isMobileDevice() {
+      return (window.innerWidth <= 768) || 
+             /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      // 앱 설치 관련 변수
+      let deferredPrompt;
+      const installButton = document.getElementById('install-button');
+      const installMenuItem = document.getElementById('install-app-menu-item');
+      const menuToggle = document.getElementById('menuToggle');
+      const mainNav = document.getElementById('mainNav');
+      
+      // 모바일에서만 메뉴 항목 표시
+      if (installMenuItem) {
+        if (isMobileDevice()) {
+          installMenuItem.style.display = 'block';
+        } else {
+          installMenuItem.style.display = 'none';
+        }
+      }
+      
+      // 화면 크기 변경 감지
+      window.addEventListener('resize', function() {
+        if (installMenuItem) {
+          if (isMobileDevice()) {
+            installMenuItem.style.display = 'block';
+          } else {
+            installMenuItem.style.display = 'none';
+          }
+        }
+      });
+      
+      // 햄버거 메뉴 토글 기능
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', function() {
+          mainNav.classList.toggle('active');
+          
+          // 아이콘 변경 (X 또는 햄버거)
+          const icon = this.querySelector('i');
+          if (mainNav.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+          } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+      }
+      
+      // 앱 설치 프롬프트 캐치
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // 설치 버튼 이벤트 리스너 추가
+        if (installButton) {
+          installButton.addEventListener('click', async () => {
+            if (!deferredPrompt) {
+              alert('설치 프롬프트를 사용할 수 없습니다. 이미 설치되었거나 브라우저가 지원하지 않을 수 있습니다.');
+              return;
+            }
+            
+            // 설치 프롬프트 표시
+            deferredPrompt.prompt();
+            
+            // 사용자 응답 대기
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`사용자 선택: ${outcome}`);
+            
+            // deferredPrompt 초기화
+            deferredPrompt = null;
+            
+            // 설치 완료 또는 취소 후 메뉴 항목 숨기기
+            if (installMenuItem) {
+              installMenuItem.style.display = 'none';
+            }
+          });
+        }
+      });
+      
+      // 앱이 이미 설치된 경우 메뉴 항목 숨기기
+      if (window.matchMedia('(display-mode: standalone)').matches || 
+          window.navigator.standalone === true) {
+        console.log('앱 모드로 실행 중입니다!');
+        if (installMenuItem) {
+          installMenuItem.style.display = 'none';
+        }
+      }
+      
+      // 앱 설치 완료 감지
+      window.addEventListener('appinstalled', () => {
+        console.log('앱이 성공적으로 설치되었습니다!');
+        deferredPrompt = null;
+        if (installMenuItem) {
+          installMenuItem.style.display = 'none';
+        }
+      });
+      
+      // 위로 가기 버튼 기능
+      const backToTopButton = document.getElementById("back-to-top");
+      
+      // 스크롤 이벤트를 감지하여 버튼 표시/숨김
+      window.addEventListener("scroll", function() {
+        if (window.scrollY > 300) {
+          backToTopButton.style.display = "block";
+        } else {
+          backToTopButton.style.display = "none";
+        }
+      });
+      
+      // 버튼 클릭 시 맨 위로 스크롤
+      backToTopButton.addEventListener("click", function() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    });
+  </script>
+  
+  <!-- PWA 서비스 워커 등록 -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/static/service-worker.js')
+          .then(registration => {
+            console.log('서비스 워커가 성공적으로 등록되었습니다:', registration.scope);
+          })
+          .catch(error => {
+            console.error('서비스 워커 등록 실패:', error);
+          });
+      });
+    }
+  </script>
+</body>
+</html>

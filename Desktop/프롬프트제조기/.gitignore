@@ -1,0 +1,17 @@
+# API 키가 포함된 설정 파일
+api/config.php
+
+# 환경별 설정 파일
+.env
+config.local.php
+
+# 로그 파일
+*.log
+
+# 임시 파일
+*.tmp
+*.temp
+
+# 시스템 파일
+.DS_Store
+Thumbs.db

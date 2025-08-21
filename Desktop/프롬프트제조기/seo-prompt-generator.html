@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 구글 1등 SEO 프롬프트 생성기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .input-section,
+        .output-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #495057;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .advanced-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .advanced-section h3 {
+            margin-bottom: 15px;
+            color: #495057;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-builder {
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .menu-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .menu-item input {
+            flex: 1;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 100%;
+            justify-content: center;
+            font-size: 18px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-add {
+            background: #28a745;
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .btn-remove {
+            background: #dc3545;
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .output-section h2 {
+            margin-bottom: 20px;
+            color: #495057;
+        }
+
+        .prompt-output {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            min-height: 400px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            border: 2px solid #e9ecef;
+        }
+
+        .copy-btn {
+            background: #6c757d;
+            color: white;
+            margin-top: 15px;
+        }
+
+        .eeat-indicators {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .eeat-card {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #b3d9ff;
+        }
+
+        .eeat-card h4 {
+            color: #0066cc;
+            margin-bottom: 5px;
+        }
+
+        .eeat-card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .tips-section {
+            background: #d4edda;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 2px solid #c3e6cb;
+        }
+
+        .tips-section h3 {
+            color: #155724;
+            margin-bottom: 10px;
+        }
+
+        .tips-section ul {
+            margin-left: 20px;
+            color: #155724;
+        }
+
+        .navigation {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .hamburger:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu .nav-link {
+            display: block;
+            margin: 10px 0;
+            color: #333;
+            background: rgba(102, 126, 234, 0.1);
+            text-align: center;
+        }
+
+        .mobile-menu .nav-link:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: none;
+        }
+
+        @media (max-width: 968px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+            }
+
+            .navigation {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .navigation h3 {
+                color: white;
+                margin: 0;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 구글 1등 SEO 프롬프트 생성기</h1>
+            <p>E-E-A-T 기반 완벽한 SEO 콘텐츠를 매일 다르게 생성합니다</p>
+        </div>
+
+        <div class="navigation">
+            <h3>📱 프롬프트 도구</h3>
+            
+            <div class="nav-menu">
+                <a href="#" class="nav-link" style="background: rgba(255,255,255,0.4);">🚀 프롬프트 생성기</a>
+                <a href="ai-seo-analyzer.html" class="nav-link">⚙️ 프롬프트 옵션추가기</a>
+            </div>
+
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#" class="nav-link" style="background: rgba(102, 126, 234, 0.3);">🚀 프롬프트 생성기</a>
+                <a href="ai-seo-analyzer.html" class="nav-link">⚙️ 프롬프트 옵션추가기</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- 입력 섹션 -->
+            <div class="input-section" id="inputSection">
+                <h2>📝 SEO 정보 입력</h2>
+
+
+
+                <div class="form-group">
+                    <label>🎯 메인 키워드</label>
+                    <input type="text" id="mainKeyword" placeholder="예: 강남 맛집">
+                </div>
+
+                <div class="form-group">
+                    <label>🔍 롱테일 키워드 (콤마로 구분)</label>
+                    <textarea id="longtailKeywords" placeholder="강남역 점심 맛집, 강남 회식 장소 추천, 강남 데이트 코스 맛집"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>🏢 비즈니스/사이트 정보</label>
+                    <input type="text" id="businessInfo" placeholder="예: 강남 맛집 큐레이션 서비스">
+                </div>
+
+                <div class="form-group">
+                    <label>👤 타겟 독자</label>
+                    <input type="text" id="targetAudience" placeholder="예: 20-30대 직장인, 강남 거주자">
+                </div>
+
+                <!-- E-E-A-T 강화 섹션 -->
+                <div class="advanced-section">
+                    <h3>🏆 E-E-A-T 강화 요소</h3>
+
+                    <div class="form-group">
+                        <label>경험 (Experience)</label>
+                        <textarea id="experience" placeholder="실제 방문 경험, 사용 후기 등을 작성하세요"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>전문성 (Expertise)</label>
+                        <textarea id="expertise" placeholder="관련 자격증, 경력, 전문 지식 등"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>권위성 (Authoritativeness)</label>
+                        <textarea id="authority" placeholder="업계 인정, 수상 경력, 미디어 언급 등"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>신뢰성 (Trust)</label>
+                        <textarea id="trust" placeholder="고객 리뷰, 인증, 보증 정책 등"></textarea>
+                    </div>
+                </div>
+
+                <!-- 리치 스니펫 설정 -->
+                <div class="advanced-section" style="background: #e7f5ff; border: 2px solid #74c0fc;">
+                    <h3>🌟 리치 스니펫 (구조화된 데이터)</h3>
+
+                    <div class="form-group">
+                        <label>스니펫 타입 선택</label>
+                        <select id="snippetType">
+                            <option value="article">Article (블로그/기사)</option>
+                            <option value="recipe">Recipe (레시피)</option>
+                            <option value="product">Product (제품)</option>
+                            <option value="review">Review (리뷰)</option>
+                            <option value="faq">FAQ (자주 묻는 질문)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>기사 제목</label>
+                        <input type="text" id="articleTitle" placeholder="SEO 최적화된 제목">
+                    </div>
+
+                    <div class="form-group">
+                        <label>기사 설명</label>
+                        <textarea id="articleDescription" placeholder="기사 요약 (짧은 설명)"></textarea>
+                    </div>
+                </div>
+
+                <!-- 매일 다른 콘텐츠 설정 -->
+                <div class="advanced-section" style="background: #fff3cd; border: 2px solid #ffeaa7;">
+                    <h3>🎲 매일 다른 콘텐츠 설정</h3>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="varyTone" checked> 톤 변경
+                        </label>
+                        <label>
+                            <input type="checkbox" id="varyStructure" checked> 구조 변경
+                        </label>
+                        <label>
+                            <input type="checkbox" id="varyExamples" checked> 예시 변경
+                        </label>
+                        <label>
+                            <input type="checkbox" id="varyData" checked> 데이터 갱신
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>콘텐츠 스타일</label>
+                        <select id="contentStyle">
+                            <option value="random">매일 랜덤</option>
+                            <option value="guide">가이드형</option>
+                            <option value="listicle">리스트형</option>
+                            <option value="comparison">비교분석형</option>
+                            <option value="howto">하우투형</option>
+                            <option value="research">리서치형</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 이미지 설정 -->
+                <div class="advanced-section" style="background: #f0f8ff; border: 2px solid #74c0fc;">
+                    <h3>🖼️ 이미지 배치 설정</h3>
+                    
+                    <div class="form-group">
+                        <label>이미지 총 개수</label>
+                        <input type="number" id="imageCount" value="5" min="1" max="20">
+                    </div>
+
+                    <div class="form-group">
+                        <label>이미지 배치 방식</label>
+                        <select id="imageLayout">
+                            <option value="distributed">글 전체에 균등 배치 (추천)</option>
+                            <option value="section">섹션별 배치</option>
+                            <option value="intro-mid-end">도입부-중간-마무리 배치</option>
+                            <option value="content-heavy">본문 집중 배치</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="includeInfographic" checked> 인포그래픽 포함
+                        </label>
+                        <label>
+                            <input type="checkbox" id="includeScreenshot" checked> 스크린샷 포함
+                        </label>
+                        <label>
+                            <input type="checkbox" id="includeChart" checked> 차트/그래프 포함
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>이미지 설명 스타일</label>
+                        <select id="imageDescStyle">
+                            <option value="detailed">상세 설명형</option>
+                            <option value="simple">간단 설명형</option>
+                            <option value="keyword">키워드 중심형</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="generatePrompt()">
+                    🚀 SEO 프롬프트 생성하기
+                </button>
+            </div>
+
+            <!-- 출력 섹션 -->
+            <div class="output-section" id="outputSection">
+                <h2>📄 생성된 SEO 프롬프트</h2>
+
+                <!-- E-E-A-T 지표 -->
+                <div class="eeat-indicators">
+                    <div class="eeat-card">
+                        <h4>Experience</h4>
+                        <p id="expScore">대기중</p>
+                    </div>
+                    <div class="eeat-card">
+                        <h4>Expertise</h4>
+                        <p id="expertScore">대기중</p>
+                    </div>
+                    <div class="eeat-card">
+                        <h4>Authority</h4>
+                        <p id="authScore">대기중</p>
+                    </div>
+                    <div class="eeat-card">
+                        <h4>Trust</h4>
+                        <p id="trustScore">대기중</p>
+                    </div>
+                </div>
+
+                <div class="prompt-output" id="promptOutput">
+                    프롬프트가 여기에 생성됩니다...
+                </div>
+
+                <button class="btn copy-btn" onclick="copyPrompt()">📋 프롬프트 복사</button>
+
+                <div style="margin-top: 20px; padding: 15px; background: #d4edda; border-radius: 10px;">
+                    <h4>💡 사용법</h4>
+                    <ol style="margin-left: 20px; line-height: 1.8;">
+                        <li>위 정보를 모두 입력하세요</li>
+                        <li>"SEO 프롬프트 생성하기" 클릭</li>
+                        <li>생성된 프롬프트를 복사</li>
+                        <li>Claude, ChatGPT 등 AI에 붙여넣기</li>
+                        <li>완벽한 SEO 최적화 콘텐츠 받기!</li>
+                    </ol>
+                </div>
+
+                <!-- 팁 섹션 -->
+                <div class="tips-section">
+                    <h3>💡 성공 팁</h3>
+                    <ul>
+                        <li>매일 다른 시간대에 발행하세요</li>
+                        <li>생성된 콘텐츠에 실제 데이터를 추가하세요</li>
+                        <li><strong>경험 사진은 반드시 직접 촬영한 원본 사진을 사용하세요</strong></li>
+                        <li>이미지는 압축하되 품질은 유지하세요 (WebP 형식 추천)</li>
+                        <li>주 1-2회는 영상 콘텐츠도 포함시키세요</li>
+                        <li>댓글과 사용자 피드백을 반영하여 업데이트</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 템플릿 관리 함수
+        function saveTemplate() {
+            const templateName = document.getElementById('templateName').value;
+            if (!templateName) {
+                alert('템플릿 이름을 입력해주세요!');
+                return;
+            }
+
+            const templateData = {
+                name: templateName,
+                mainKeyword: document.getElementById('mainKeyword').value,
+                longtailKeywords: document.getElementById('longtailKeywords').value,
+                businessInfo: document.getElementById('businessInfo').value,
+                targetAudience: document.getElementById('targetAudience').value,
+                experience: document.getElementById('experience').value,
+                expertise: document.getElementById('expertise').value,
+                authority: document.getElementById('authority').value,
+                trust: document.getElementById('trust').value,
+                snippetType: document.getElementById('snippetType').value,
+                contentStyle: document.getElementById('contentStyle').value,
+                imageCount: document.getElementById('imageCount').value,
+                imageLayout: document.getElementById('imageLayout').value,
+                includeInfographic: document.getElementById('includeInfographic').checked,
+                includeScreenshot: document.getElementById('includeScreenshot').checked,
+                includeChart: document.getElementById('includeChart').checked,
+                imageDescStyle: document.getElementById('imageDescStyle').value,
+                articleTitle: document.getElementById('articleTitle').value,
+                articleDescription: document.getElementById('articleDescription').value
+            };
+
+            // 로컬 스토리지에 저장
+            let templates = JSON.parse(localStorage.getItem('seoTemplates') || '[]');
+
+            // 같은 이름의 템플릿이 있으면 덮어쓰기
+            const existingIndex = templates.findIndex(t => t.name === templateName);
+            if (existingIndex >= 0) {
+                templates[existingIndex] = templateData;
+            } else {
+                templates.push(templateData);
+            }
+
+            localStorage.setItem('seoTemplates', JSON.stringify(templates));
+
+            updateTemplateList();
+            alert('템플릿이 저장되었습니다!');
+        }
+
+        function loadTemplate() {
+            const selectedIndex = document.getElementById('savedTemplates').selectedIndex - 1;
+            if (selectedIndex < 0) return;
+
+            const templates = JSON.parse(localStorage.getItem('seoTemplates') || '[]');
+            const template = templates[selectedIndex];
+
+            // 모든 필드에 값 채우기
+            document.getElementById('mainKeyword').value = template.mainKeyword || '';
+            document.getElementById('longtailKeywords').value = template.longtailKeywords || '';
+            document.getElementById('businessInfo').value = template.businessInfo || '';
+            document.getElementById('targetAudience').value = template.targetAudience || '';
+            document.getElementById('experience').value = template.experience || '';
+            document.getElementById('expertise').value = template.expertise || '';
+            document.getElementById('authority').value = template.authority || '';
+            document.getElementById('trust').value = template.trust || '';
+            document.getElementById('snippetType').value = template.snippetType || 'article';
+            document.getElementById('contentStyle').value = template.contentStyle || 'random';
+            document.getElementById('imageCount').value = template.imageCount || '5';
+            document.getElementById('imageLayout').value = template.imageLayout || 'distributed';
+            document.getElementById('includeInfographic').checked = template.includeInfographic !== false;
+            document.getElementById('includeScreenshot').checked = template.includeScreenshot !== false;
+            document.getElementById('includeChart').checked = template.includeChart !== false;
+            document.getElementById('imageDescStyle').value = template.imageDescStyle || 'detailed';
+            document.getElementById('articleTitle').value = template.articleTitle || '';
+            document.getElementById('articleDescription').value = template.articleDescription || '';
+
+            alert('템플릿을 불러왔습니다!');
+        }
+
+        function deleteTemplate() {
+            const selectedIndex = document.getElementById('savedTemplates').selectedIndex - 1;
+            if (selectedIndex < 0) {
+                alert('삭제할 템플릿을 선택해주세요!');
+                return;
+            }
+
+            if (confirm('정말 삭제하시겠습니까?')) {
+                let templates = JSON.parse(localStorage.getItem('seoTemplates') || '[]');
+                templates.splice(selectedIndex, 1);
+                localStorage.setItem('seoTemplates', JSON.stringify(templates));
+                updateTemplateList();
+                alert('템플릿이 삭제되었습니다!');
+            }
+        }
+
+        function updateTemplateList() {
+            const templates = JSON.parse(localStorage.getItem('seoTemplates') || '[]');
+            const select = document.getElementById('savedTemplates');
+
+            select.innerHTML = '<option value="">-- 저장된 템플릿 선택 --</option>';
+            templates.forEach((template, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = template.name;
+                select.appendChild(option);
+            });
+        }
+
+        // 분석 데이터 확인 및 적용
+        function checkForAnalysisData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlAnalysisData = localStorage.getItem('urlAnalysisData');
+            const aiAnalysisData = localStorage.getItem('aiAnalysisData');
+
+            // AI 분석기에서 온 데이터 처리
+            if (urlParams.get('from') === 'ai-analyzer' && aiAnalysisData) {
+                const data = JSON.parse(aiAnalysisData);
+                applyAIAnalysisData(data);
+
+                // 데이터 사용 후 삭제
+                localStorage.removeItem('aiAnalysisData');
+
+                // URL에서 파라미터 제거
+                window.history.replaceState({}, document.title, window.location.pathname);
+
+                alert('🎉 AI 분석 데이터가 자동으로 적용되었습니다!');
+            }
+            // 기존 URL 분석기에서 온 데이터 처리
+            else if (urlParams.get('from') === 'analyzer' && urlAnalysisData) {
+                const data = JSON.parse(urlAnalysisData);
+                applyAnalysisData(data);
+
+                // 데이터 사용 후 삭제
+                localStorage.removeItem('urlAnalysisData');
+
+                // URL에서 파라미터 제거
+                window.history.replaceState({}, document.title, window.location.pathname);
+
+                alert('🎉 URL 분석 데이터가 자동으로 적용되었습니다!');
+            }
+        }
+
+        // AI 분석 데이터를 폼에 적용
+        function applyAIAnalysisData(data) {
+            if (data.mainKeyword) {
+                document.getElementById('mainKeyword').value = data.mainKeyword;
+            }
+
+            if (data.longtailKeywords) {
+                document.getElementById('longtailKeywords').value = data.longtailKeywords;
+            }
+
+            if (data.businessInfo) {
+                document.getElementById('businessInfo').value = data.businessInfo;
+            }
+
+            if (data.targetAudience) {
+                document.getElementById('targetAudience').value = data.targetAudience;
+            }
+
+            if (data.experience) {
+                document.getElementById('experience').value = data.experience;
+            }
+
+            if (data.expertise) {
+                document.getElementById('expertise').value = data.expertise;
+            }
+
+            if (data.authority) {
+                document.getElementById('authority').value = data.authority;
+            }
+
+            if (data.trust) {
+                document.getElementById('trust').value = data.trust;
+            }
+
+            // 리치 스니펫 필드도 채우기
+            if (data.title) {
+                document.getElementById('articleTitle').value = data.title;
+            }
+
+            if (data.description) {
+                document.getElementById('articleDescription').value = data.description;
+            }
+        }
+
+        // 기존 URL 분석 데이터를 폼에 적용
+        function applyAnalysisData(data) {
+            if (data.keywords) {
+                const keywords = data.keywords.split(', ');
+                document.getElementById('mainKeyword').value = keywords[0] || '';
+                document.getElementById('longtailKeywords').value = keywords.slice(1).join(', ');
+            }
+
+            if (data.businessInfo) {
+                document.getElementById('businessInfo').value = data.businessInfo;
+            }
+
+            if (data.targetAudience) {
+                document.getElementById('targetAudience').value = data.targetAudience;
+            }
+
+            if (data.experience) {
+                document.getElementById('experience').value = data.experience;
+            }
+
+            if (data.expertise) {
+                document.getElementById('expertise').value = data.expertise;
+            }
+
+            if (data.authority) {
+                document.getElementById('authority').value = data.authority;
+            }
+
+            if (data.trust) {
+                document.getElementById('trust').value = data.trust;
+            }
+
+            // 리치 스니펫 필드도 채우기
+            if (data.title) {
+                document.getElementById('articleTitle').value = data.title;
+            }
+
+            if (data.description) {
+                document.getElementById('articleDescription').value = data.description;
+            }
+        }
+
+        // 오늘 날짜 기반 변화 시드
+        function getDailySeed() {
+            const today = new Date();
+            return today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+        }
+
+        // 프롬프트 생성
+        function generatePrompt() {
+            const mainKeyword = document.getElementById('mainKeyword').value;
+            const longtailKeywords = document.getElementById('longtailKeywords').value;
+            const businessInfo = document.getElementById('businessInfo').value;
+            const targetAudience = document.getElementById('targetAudience').value;
+            const experience = document.getElementById('experience').value;
+            const expertise = document.getElementById('expertise').value;
+            const authority = document.getElementById('authority').value;
+            const trust = document.getElementById('trust').value;
+            const contentStyle = document.getElementById('contentStyle').value;
+            const imageCount = document.getElementById('imageCount').value;
+            const imageLayout = document.getElementById('imageLayout').value;
+            const includeInfographic = document.getElementById('includeInfographic').checked;
+            const includeScreenshot = document.getElementById('includeScreenshot').checked;
+            const includeChart = document.getElementById('includeChart').checked;
+            const imageDescStyle = document.getElementById('imageDescStyle').value;
+            const articleTitle = document.getElementById('articleTitle').value;
+            const articleDescription = document.getElementById('articleDescription').value;
+
+            if (!mainKeyword) {
+                alert('메인 키워드를 입력해주세요!');
+                return;
+            }
+
+            // E-E-A-T 점수 계산
+            const expScore = experience ? '우수' : '보통';
+            const expertScore = expertise ? '우수' : '보통';
+            const authScore = authority ? '우수' : '보통';
+            const trustScore = trust ? '우수' : '보통';
+
+            document.getElementById('expScore').textContent = expScore;
+            document.getElementById('expertScore').textContent = expertScore;
+            document.getElementById('authScore').textContent = authScore;
+            document.getElementById('trustScore').textContent = trustScore;
+
+            // 오늘의 변화 요소
+            const seed = getDailySeed();
+            const variations = getVariations(seed);
+
+            // 프롬프트 생성
+            const prompt = `# SEO 최적화 콘텐츠 생성
+
+## 기본 정보
+키워드: ${mainKeyword}
+롱테일: ${longtailKeywords}
+비즈니스: ${businessInfo}
+타겟: ${targetAudience}
+스타일: ${contentStyle}
+
+## E-E-A-T 요소
+${experience ? `**경험**: ${experience}` : '**경험**: 실제 경험과 사용 사례 포함'}
+${expertise ? `**전문성**: ${expertise}` : '**전문성**: 전문 지식과 깊이 있는 정보'}
+${authority ? `**권위성**: ${authority}` : '**권위성**: 신뢰할 수 있는 출처 활용'}  
+${trust ? `**신뢰성**: ${trust}` : '**신뢰성**: 정확한 정보와 투명성'}
+
+## 콘텐츠 요구사항
+
+### 📝 구조 및 최적화
+1. **제목**: 60자 이내, 키워드 포함 ${articleTitle ? `(추천: "${articleTitle}")` : ''}
+2. **메타설명**: 155자 이내 ${articleDescription ? `(추천: "${articleDescription}")` : ''}
+3. **구조**: ${variations.structure}
+4. **키워드**: 메인 1-2% 밀도, 롱테일 자연스럽게 분산
+5. **내부링크**: 3-5개, 외부링크 2-3개
+
+### 🖼️ 이미지 배치 (총 ${imageCount}개)
+${getImageLayoutStrategy(imageLayout, imageCount)}
+
+**이미지 유형**: ${getImageTypeGuide(includeInfographic, includeScreenshot, includeChart)}
+**Alt 텍스트**: ${getImageDescriptionStyle(imageDescStyle)}
+
+### 📱 사용자 경험
+- 문단: 3-4줄씩 구성
+- 목차(TOC) 포함
+- 모바일 최적화
+- 스키마 마크업 적용
+
+### 🎯 오늘의 스타일
+- ${variations.tone}
+- ${variations.examples}
+- ${variations.data}
+
+위 조건으로 구글 상위 랭킹을 목표로 하는 완성도 높은 SEO 콘텐츠를 작성해주세요.`;
+
+            document.getElementById('promptOutput').textContent = prompt;
+        }
+
+        // 이미지 배치 전략 생성
+        function getImageLayoutStrategy(layout, count) {
+            const strategies = {
+                'distributed': `
+🎯 **균등 배치 전략**:
+- 글 전체 길이를 ${count}개 구간으로 나누어 균등하게 배치
+- 각 주요 섹션마다 1개씩 배치하여 글 읽기 피로도 감소
+- 서론 → 본문1 → 본문2 → 결론 순서로 자연스럽게 배치
+- 예: 1000단어 글이면 200단어마다 이미지 1개씩 배치`,
+
+                'section': `
+📋 **섹션별 배치 전략**:
+- H2, H3 제목 직후에 관련 이미지 배치
+- 각 섹션의 핵심 내용을 시각적으로 보완
+- 목차와 이미지가 1:1 매칭되도록 구성
+- 섹션 제목 → 이미지 → 본문 내용 순서`,
+
+                'intro-mid-end': `
+🎬 **3단 구성 배치**:
+- 도입부: ${Math.ceil(count * 0.2)}개 (독자 관심 유발)
+- 본문 중간: ${Math.ceil(count * 0.6)}개 (핵심 내용 설명)
+- 마무리: ${Math.ceil(count * 0.2)}개 (결론 및 요약)
+- 스토리텔링 구조와 연계한 이미지 배치`,
+
+                'content-heavy': `
+💪 **본문 집중 배치**:
+- 처음 20%와 마지막 20%는 텍스트 위주
+- 중간 60% 구간에 ${count}개 이미지 집중 배치
+- 복잡한 개념 설명 시 이미지로 이해도 향상
+- 튜토리얼이나 가이드형 콘텐츠에 최적화`
+            };
+            return strategies[layout] || strategies['distributed'];
+        }
+
+        // 이미지 유형 가이드 생성
+        function getImageTypeGuide(infographic, screenshot, chart) {
+            let guide = '**포함할 이미지 유형**:\n';
+            
+            if (infographic) {
+                guide += '- 📊 **인포그래픽**: 핵심 정보를 한눈에 보여주는 요약 이미지\n';
+            }
+            if (screenshot) {
+                guide += '- 📱 **스크린샷**: 실제 사용 화면이나 예시 이미지\n';
+            }
+            if (chart) {
+                guide += '- 📈 **차트/그래프**: 데이터와 통계를 시각화한 이미지\n';
+            }
+            
+            guide += '- 📸 **실제 사진**: 직접 촬영한 원본 이미지 (E-E-A-T 강화)\n';
+            guide += '- 🎨 **커스텀 이미지**: 브랜드 아이덴티티가 반영된 디자인';
+            
+            return guide;
+        }
+
+        // 이미지 설명 스타일 생성
+        function getImageDescriptionStyle(style) {
+            const styles = {
+                'detailed': '키워드 + 상세 설명 (예: "강남역 맛집 추천 리스트 - 직장인들이 자주 찾는 점심 식당 10곳")',
+                'simple': '키워드 + 간단 설명 (예: "강남역 맛집 추천 리스트")',
+                'keyword': '키워드 중심 (예: "강남역 맛집, 점심 추천")'
+            };
+            return styles[style] || styles['detailed'];
+        }
+
+        // 매일 다른 변화 요소 생성
+        function getVariations(seed) {
+            const tones = [
+                '친근하고 대화체 톤으로 작성하세요.',
+                '전문적이고 신뢰감 있는 톤으로 작성하세요.',
+                '유머러스하고 재미있는 톤으로 작성하세요.',
+                '진지하고 분석적인 톤으로 작성하세요.'
+            ];
+
+            const structures = [
+                '문제 제기 → 해결책 제시 → 실제 사례 → 결론 순서로 구성하세요.',
+                '개요 → 상세 설명 → 비교 분석 → 추천 사항 순서로 구성하세요.',
+                '현황 분석 → 트렌드 → 전망 → 실행 방안 순서로 구성하세요.',
+                '기초 개념 → 심화 내용 → 실습 예제 → 마무리 순서로 구성하세요.'
+            ];
+
+            const examples = [
+                '구체적인 수치와 통계 데이터를 포함하세요.',
+                '실제 사용자 후기와 케이스 스터디를 포함하세요.',
+                '최신 트렌드와 업계 동향을 반영하세요.',
+                '단계별 가이드와 체크리스트를 포함하세요.'
+            ];
+
+            const dataTypes = [
+                '2024년 최신 데이터와 통계를 활용하세요.',
+                '업계 전문가 인터뷰와 의견을 포함하세요.',
+                '관련 연구 결과와 보고서를 인용하세요.',
+                '실시간 트렌드와 검색 데이터를 반영하세요.'
+            ];
+
+            return {
+                tone: tones[seed % tones.length],
+                structure: structures[seed % structures.length],
+                examples: examples[seed % examples.length],
+                data: dataTypes[seed % dataTypes.length]
+            };
+        }
+
+        // 프롬프트 복사
+        function copyPrompt() {
+            const promptText = document.getElementById('promptOutput').textContent;
+            navigator.clipboard.writeText(promptText).then(() => {
+                alert('프롬프트가 클립보드에 복사되었습니다!');
+            });
+        }
+
+        // 햄버거 메뉴 토글
+        function toggleMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // 모바일 메뉴 외부 클릭 시 닫기
+        document.addEventListener('click', function(event) {
+            const navigation = document.querySelector('.navigation');
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (!navigation.contains(event.target)) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // 페이지 로드 시 실행
+        window.onload = function () {
+            updateTemplateList();
+            checkForAnalysisData();
+            console.log('오늘의 변화 시드:', getDailySeed());
+        };
+    </script>
+</body>
+
+</html>

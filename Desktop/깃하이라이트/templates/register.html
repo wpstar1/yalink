@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#2c2c54" />
+  <title>회원가입 - 깃하이라이트</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo-section">
+        <h1><a href="/" class="logo-link">🌟 깃하이라이트</a></h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/about" title="사이트 소개"><i class="fas fa-info-circle"></i> 소개</a></li>
+          <li><a href="/login" title="로그인"><i class="fas fa-sign-in-alt"></i> 로그인</a></li>
+          <li><a href="/register" class="register-btn active" title="회원가입"><i class="fas fa-user-plus"></i> 회원가입</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="auth-container">
+      <div class="auth-card">
+        <h2>회원가입</h2>
+        
+        {% if error %}
+        <div class="alert alert-error">
+          <i class="fas fa-exclamation-circle"></i> {{ error }}
+        </div>
+        {% endif %}
+        
+        <form action="/register" method="post" class="auth-form">
+          <div class="form-group">
+            <label for="username">아이디</label>
+            <input type="text" id="username" name="username" required value="{{ username if username else '' }}">
+            <small>영문, 숫자 조합 4~20자</small>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" required>
+            <small>8자 이상 입력해주세요</small>
+          </div>
+          
+          <div class="form-group">
+            <label for="password_confirm">비밀번호 확인</label>
+            <input type="password" id="password_confirm" name="password_confirm" required>
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">가입하기</button>
+          </div>
+        </form>
+        
+        <div class="auth-links">
+          <p>이미 계정이 있으신가요? <a href="/login">로그인</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 깃하이라이트 2025 | <a href="https://github.com" target="_blank">GitHub</a>에서 발견된 보석들</p>
+  </footer>
+</body>
+</html>

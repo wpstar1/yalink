@@ -1,0 +1,25 @@
+{
+  "name": "backlink-main",
+  "version": "1.0.0",
+  "description": "회원가입 없이 간편하게 백링크를 신청할 수 있는 웹 시스템입니다.",
+  "main": "config.example.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "node-telegram-bot-api": "^0.66.0",
+    "nodemailer": "^7.0.5",
+    "sqlite3": "^5.1.7",
+    "uuid": "^11.1.0"
+  }
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "name": "hacksider/Deep-Live-Cam",
+    "link": "https://github.com/hacksider/Deep-Live-Cam",
+    "summary": "\"Deep-Live-Cam\"은 실시간 얼굴 교체 및 비디오 딥페이크를 단 한 번의 클릭과 단일 이미지로 생성할 수 있는 도구입니다. 이 소프트웨어는 AI 생성 미디어 산업을 위한 생산적인 도구로 설계되었으며, 예술가들이 사용자 정의 캐릭터를 애니메이팅하거나, 흥미로운 콘텐츠를 만들거나, 심지어 의류 디자인을 위한 모델을 사용하는데 도움이 될 수 있습니다.",
+    "feature": "실시간으로 얼굴을 교체하고 비디오 딥페이크를 생성하는 기능을 제공합니다.",
+    "code": "-   [Visual Studio 2022 Runtimes (Windows)](https://visualstudio.microsoft.com/visual-cpp-build-tools/)\n\n**2. Clone the Repository**\n",
+    "stars": 1511
+  },
+  {
+    "name": "jj-vcs/jj",
+    "link": "https://github.com/jj-vcs/jj",
+    "summary": "'Jujutsu'는 소프트웨어 프로젝트를 위한 강력한 버전 관리 시스템입니다. 코드의 복사본을 얻고, 코드 변경 사항을 추적하며, 그 변경 사항을 다른 사람들이 볼 수 있게 발행하는 데 사용합니다. 또한 사용자 인터페이스와 버전 제어 알고리즘을 저장 시스템에서 추상화하여 다양한 물리적 백엔드에서 버전 제어 시스템으로 작동할 수 있게 해줍니다.",
+    "feature": "코드의 변경 사항을 추적하고 발행하며, 다양한 물리적 백엔드에서 버전 제어 시스템을 제공하는 기능을 가지고 있습니다.",
+    "code": "git rebase\n  --update-refs",
+    "stars": 365
+  },
+  {
+    "name": "aipotheosis-labs/aci",
+    "link": "https://github.com/aipotheosis-labs/aci",
+    "summary": "ACI.dev는 AI 에이전트 도구 사용을 위한 오픈 소스 인프라스트럭처 계층입니다. 이를 통해 에이전트는 600개 이상의 도구에 대한 의도를 인식하는 접근을 가능하게 하며, 다중 테넌트 인증, 세분화된 권한, 동적 도구 탐색 등을 제공합니다.",
+    "feature": "ACI.dev는 구글 캘린더, 슬랙 등의 별도 OAuth 흐름과 API 클라이언트 작성 대신, 인증 관리와 AI 에이전트에게 통합, 보안된 함수 호출을 제공합니다. 이 기능들은 통합 MCP 서버 또는 가벼운 Python SDK를 통해 접근할 수 있습니다.",
+    "code": "> [!NOTE]",
+    "stars": 355
+  },
+  {
+    "name": "donnemartin/system-design-primer",
+    "link": "https://github.com/donnemartin/system-design-primer",
+    "summary": "'donnemartin/system-design-primer' 프로젝트는 대규모 시스템 설계를 배우는 데 도움이 되는 자료를 제공합니다. 인터넷에 흩어져 있는 시스템 설계 원칙에 대한 정보를 정리하여 제공하며, 효과적인 시스템 설계 인터뷰 대비 방법도 안내합니다.",
+    "feature": "대규모 시스템 설계 학습 자료를 제공하고, 시스템 설계 인터뷰 대비 방법을 안내하는 기능을 가지고 있습니다.",
+    "code": "Availability (Total) = Availability (Foo) * Availability (Bar)",
+    "stars": 164
+  },
+  {
+    "name": "cloudflare/mcp-server-cloudflare",
+    "link": "https://github.com/cloudflare/mcp-server-cloudflare",
+    "summary": "'cloudflare/mcp-server-cloudflare' 프로젝트는 큰 언어 모델(LLMs)과 외부 시스템 간의 컨텍스트를 관리하기 위한 새롭고 표준화된 프로토콜인 모델 컨텍스트 프로토콜(MCP)을 사용합니다. 이 저장소에서는 MCP 클라이언트를 통해 Cloudflare의 서비스에 연결하고 자연어를 사용하여 Cloudflare 계정을 통해 작업을 수행할 수 있는 여러 MCP 서버를 찾을 수 있습니다.",
+    "feature": "이 MCP 서버는 사용자의 MCP 클라이언트가 계정에서 구성을 읽고, 정보를 처리하고, 데이터를 기반으로 제안을 하고, 심지어 제안된 변경 사항을 수행할 수 있게 해줍니다. 이 모든 작업은 애플리케이션 개발, 보안 및 성능을 포함한 Cloudflare의 많은 서비스에서 발생할 수 있습니다.",
+    "code": "{\n\t\"mcpServers\": {\n\t\t\"cloudflare-observability\": {\n\t\t\t\"command\": \"npx\",\n\t\t\t\"args\": [\"mcp-remote\", \"https://observability.mcp.cloudflare.com/sse\"]\n\t\t},\n\t\t\"cloudflare-bindings\": {\n\t\t\t\"command\": \"npx\",\n\t\t\t\"args\": [\"mcp-remote\", \"https://bindings.mcp.cloudflare.com/sse\"]\n\t\t}\n\t}\n}",
+    "stars": 138
+  },
+  {
+    "name": "openai/whisper",
+    "link": "https://github.com/openai/whisper",
+    "summary": "OpenAI에서 개발한 범용 음성 인식 모델입니다. 다양한 언어의 음성을 인식하고 텍스트로 변환하는 강력한 기능을 제공합니다.",
+    "feature": "다국어 음성 인식, 실시간 자막 생성, API 인터페이스 제공",
+    "code": "import whisper\n\nmodel = whisper.load_model(\"base\")\nresult = model.transcribe(\"audio.mp3\")\nprint(result[\"text\"])",
+    "stars": "50k+"
+  },
+  {
+    "name": "microsoft/TypeChat",
+    "link": "https://github.com/microsoft/TypeChat",
+    "summary": "자연어를 타입스크립트 데이터 구조로 변환해주는 라이브러리입니다. 복잡한 사용자 입력을 구조화된 데이터로 손쉽게 변환할 수 있습니다.",
+    "feature": "자연어-구조화 데이터 변환, TypeScript 통합, 스키마 기반 검증",
+    "code": "import { TypeChat } from \"typechat\";\n\n// 스키마 정의\nconst schema = `\ninterface Order {\n  items: CartItem[];\n  address: Address;\n}\n`;\n\nconst result = await typeChat.translate(\"2개의 아메리카노와 1개의 치즈케이크 주문해줘\");\nconsole.log(result.data);",
+    "stars": "19k+"
+  },
+  {
+    "name": "lm-sys/FastChat",
+    "link": "https://github.com/lm-sys/FastChat",
+    "summary": "다양한 오픈소스 대화형 AI 모델을 간편하게 배포하고 사용할 수 있는 플랫폼입니다. Vicuna, Alpaca, LLaMA 등 다양한 모델을 지원합니다.",
+    "feature": "웹 UI, API 서버, 모델 평가 도구 제공",
+    "code": "from fastchat.serve.controller import Controller\nfrom fastchat.serve.model_worker import ModelWorker\nfrom fastchat.serve.api import APIServer\n\n# 컨트롤러 시작\ncontroller = Controller()\ncontroller.start()\n\n# 모델 워커 시작\nworker = ModelWorker(\"vicuna-7b\", controller_addr=\"localhost:21001\")\nworker.start()\n\n# API 서버 시작\napi_server = APIServer(controller_addr=\"localhost:21001\")\napi_server.start()",
+    "stars": "31k+"
+  },
+  {
+    "name": "oven-sh/bun",
+    "link": "https://github.com/oven-sh/bun",
+    "summary": "자바스크립트와 타입스크립트를 위한 초고속 올인원 런타임입니다. Node.js보다 빠른 속도와 향상된 개발자 경험을 제공합니다.",
+    "feature": "빠른 자바스크립트 실행, 내장 번들러, 테스트 러너, NPM 호환성",
+    "code": "// 서버 실행\nconst server = Bun.serve({\n  port: 3000,\n  fetch(req) {\n    return new Response(\"Bun 서버에 오신 것을 환영합니다!\");\n  },\n});\n\nconsole.log(`서버가 ${server.port}번 포트에서 실행 중입니다`);",
+    "stars": "65k+"
+  },
+  {
+    "name": "refinedev/refine",
+    "link": "https://github.com/refinedev/refine",
+    "summary": "React 기반의 내부 도구 개발을 위한 프레임워크입니다. 관리자 패널, 대시보드, B2B 애플리케이션을 빠르게 구축할 수 있습니다.",
+    "feature": "CRUD 작업 자동화, 인증 시스템, 다양한 UI 프레임워크 지원",
+    "code": "import { Refine } from \"@refinedev/core\";\nimport routerProvider from \"@refinedev/react-router-v6\";\nimport dataProvider from \"@refinedev/simple-rest\";\n\nimport { PostList, PostCreate, PostEdit, PostShow } from \"pages/posts\";\n\nfunction App() {\n  return (\n    <Refine\n      dataProvider={dataProvider(\"https://api.fake-rest.refine.dev\")}\n      routerProvider={routerProvider}\n      resources={[\n        {\n          name: \"posts\",\n          list: PostList,\n          create: PostCreate,\n          edit: PostEdit,\n          show: PostShow,\n        },\n      ]}\n    />\n  );\n}",
+    "stars": "17k+"
+  },
+  {
+    "name": "langchain-ai/langchain",
+    "link": "https://github.com/langchain-ai/langchain",
+    "summary": "LLM(대규모 언어 모델)을 활용한 애플리케이션 개발을 위한 프레임워크입니다. 다양한 모델을 통합하고 체인 및 에이전트 패턴을 제공합니다.",
+    "feature": "프롬프트 최적화, 체인 및 에이전트 구현, 벡터 데이터베이스 통합",
+    "code": "from langchain.llms import OpenAI\nfrom langchain.chains import LLMChain\nfrom langchain.prompts import PromptTemplate\n\n# 프롬프트 템플릿 정의\ntemplate = \"\"\"질문: {question}\n대답:\"\"\"\n\nprompt = PromptTemplate(template=template, input_variables=[\"question\"])\n\n# 체인 생성\nllm = OpenAI(temperature=0.9)\nchain = LLMChain(llm=llm, prompt=prompt)\n\n# 실행\nprint(chain.run(\"파이썬으로 웹 스크래핑을 어떻게 하나요?\"))",
+    "stars": "75k+"
+  },
+  {
+    "name": "shadcn-ui/ui",
+    "link": "https://github.com/shadcn-ui/ui",
+    "summary": "아름다운 UI 컴포넌트 모음으로, 직접 복사하여 사용할 수 있습니다. Radix UI와 Tailwind CSS를 기반으로 하며 고도의 커스터마이징이 가능합니다.",
+    "feature": "접근성 우수, 다크 모드 지원, 재사용 가능한 컴포넌트",
+    "code": "import {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\"\n\nexport function DemoCard() {\n  return (\n    <Card>\n      <CardHeader>\n        <CardTitle>알림 설정</CardTitle>\n        <CardDescription>앱 알림을 관리하세요.</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <p>카드의 주요 내용이 들어갑니다.</p>\n      </CardContent>\n      <CardFooter>\n        <button>저장</button>\n      </CardFooter>\n    </Card>\n  )\n}",
+    "stars": "45k+"
+  },
+  {
+    "name": "vercel/next.js",
+    "link": "https://github.com/vercel/next.js",
+    "summary": "React 기반의 풀스택 웹 프레임워크로, 서버 사이드 렌더링과 정적 웹사이트 생성을 모두 지원합니다. 개발자 경험을 극대화한 도구입니다.",
+    "feature": "서버 컴포넌트, 증분 정적 재생성, 자동 이미지 최적화, API 라우트",
+    "code": "// app/page.tsx - React 서버 컴포넌트\nexport default async function Home() {\n  const products = await getProducts();\n  \n  return (\n    <main>\n      <h1>제품 목록</h1>\n      <div className=\"products-grid\">\n        {products.map((product) => (\n          <ProductCard \n            key={product.id} \n            product={product} \n          />\n        ))}\n      </div>\n    </main>\n  );\n}",
+    "stars": "115k+"
+  },
+  {
+    "name": "AmruthPillai/Reactive-Resume",
+    "link": "https://github.com/AmruthPillai/Reactive-Resume",
+    "summary": "무료 오픈소스 이력서 빌더로, 사용자 친화적인 인터페이스를 제공하고 다양한 템플릿을 지원합니다. 프라이버시를 중시하며 이력서 데이터는 로컬에 저장됩니다.",
+    "feature": "다양한 템플릿, 다국어 지원, PDF 내보내기, 데이터 백업 및 복원",
+    "code": "import { Resume, Section, Field } from '@reactive-resume/schema';\nimport { useResume } from '@reactive-resume/hooks';\n\nfunction ResumeEditor() {\n  const { resume, setResume } = useResume();\n  \n  const updateField = (section: Section, id: string, field: Field, value: string) => {\n    setResume({\n      ...resume,\n      sections: {\n        ...resume.sections,\n        [section]: {\n          ...resume.sections[section],\n          items: resume.sections[section].items.map(item => \n            item.id === id ? { ...item, [field]: value } : item\n          )\n        }\n      }\n    });\n  };\n  \n  // 이력서 에디터 UI 렌더링 코드\n}",
+    "stars": "18k+"
+  },
+  {
+    "name": "withastro/astro",
+    "link": "https://github.com/withastro/astro",
+    "summary": "콘텐츠 중심 웹사이트를 위한 올인원 웹 프레임워크입니다. 다양한 UI 프레임워크를 통합하며 HTML 우선 접근 방식으로 최적의 성능을 제공합니다.",
+    "feature": "아일랜드 아키텍처, 제로 JS 기본 설정, 다양한 통합 지원, 콘텐츠 컬렉션",
+    "code": "---\n// src/pages/index.astro\nimport Layout from '../layouts/Main.astro';\nimport Card from '../components/Card.astro';\nimport { getCollection } from 'astro:content';\n\nconst posts = await getCollection('blog');\n---\n\n<Layout title=\"내 블로그\">\n  <h1>최신 게시물</h1>\n  <div class=\"grid\">\n    {posts.map(post => (\n      <Card \n        title={post.data.title}\n        description={post.data.description}\n        url={`/blog/${post.slug}`}\n      />\n    ))}\n  </div>\n</Layout>",
+    "stars": "38k+"
+  }
+]

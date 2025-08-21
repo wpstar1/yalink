@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://warpstar-seo-studio.vercel.app/sitemap.xml
+
+# 크롤링 최적화
+Crawl-delay: 1
+
+# 주요 페이지 우선순위
+Allow: /
+Allow: /#services
+Allow: /#about
+Allow: /#programs
+
+# 검색엔진별 설정
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: NaverBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /

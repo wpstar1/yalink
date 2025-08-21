@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c2c54" />
+    <title>내 북마크 - 깃하이라이트</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo-section">
+                <h1><a href="/" class="logo-link">🌟 깃하이라이트</a></h1>
+                <p>내 북마크 목록</p>
+            </div>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="/" title="홈으로"><i class="fas fa-home"></i> 홈</a></li>
+                    <li><a href="/about" title="사이트 소개"><i class="fas fa-info-circle"></i> 소개</a></li>
+                    <li class="active"><a href="/bookmarks" title="내 북마크"><i class="fas fa-bookmark"></i> 내 북마크</a></li>
+                    <li><a href="/logout" title="로그아웃"><i class="fas fa-sign-out-alt"></i> 로그아웃</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% if not bookmarks %}
+            <div class="no-bookmarks">
+                <p>저장된 북마크가 없습니다.</p>
+                <a href="{{ url_for('index') }}" class="btn">트렌딩 페이지로 돌아가기</a>
+            </div>
+        {% else %}
+            {% for bookmark in bookmarks %}
+            <section class="card" id="bookmark-{{ bookmark.id }}">
+                <h2><a href="{{ bookmark.repo_link }}" target="_blank">{{ bookmark.repo_name }}</a></h2>
+                <div class="stars-container">
+                    <span class="stars"><i class="fas fa-star"></i> {{ bookmark.repo_stars }}</span>
+                </div>
+                <div class="summary-section">
+                    <p><strong class="summary-label">요약:</strong> {{ bookmark.repo_summary }}</p>
+                    <p><strong class="feature-label">기능:</strong> {{ bookmark.repo_feature }}</p>
+                </div>
+                {% if bookmark.repo_code and bookmark.repo_code != "코드 예시를 찾을 수 없습니다" %}
+                <pre><code>{{ bookmark.repo_code }}</code></pre>
+                {% endif %}
+                <div class="card-actions">
+                    <button class="bookmark-btn remove" data-bookmark-id="{{ bookmark.id }}">
+                        <i class="fas fa-trash-alt"></i> 북마크 삭제
+                    </button>
+                </div>
+            </section>
+            {% endfor %}
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 깃하이라이트 2025 | <a href="https://github.com" target="_blank">GitHub</a>에서 발견된 보석들</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 햄버거 메뉴 토글
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // 북마크 삭제 버튼 이벤트
+            document.querySelectorAll('.bookmark-btn.remove').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const bookmarkId = this.dataset.bookmarkId;
+                    removeBookmark(bookmarkId);
+                });
+            });
+            
+            // 다크 모드 감지
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+            }
+            
+            // 스크롤 시 헤더 색상 변경
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 10) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+        
+        // 북마크 삭제 함수
+        function removeBookmark(bookmarkId) {
+            fetch(`/bookmark/${bookmarkId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const bookmarkElement = document.getElementById(`bookmark-${bookmarkId}`);
+                    bookmarkElement.style.opacity = 0;
+                    setTimeout(() => {
+                        bookmarkElement.remove();
+                        
+                        // 북마크가 더 이상 없는지 확인
+                        if (document.querySelectorAll('.card').length === 0) {
+                            location.reload(); // 페이지 새로고침하여 "북마크 없음" 메시지 표시
+                        }
+                    }, 300);
+                } else {
+                    alert('북마크 삭제 실패: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('북마크 삭제 중 오류 발생:', error);
+                alert('북마크 삭제 중 오류가 발생했습니다.');
+            });
+        }
+    </script>
+</body>
+</html>

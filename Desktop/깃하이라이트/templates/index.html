@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#2c2c54" />
+  <title>깃하이라이트</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="logo-section">
+        <h1><a href="/" class="logo-link">🌟 깃하이라이트</a></h1>
+        <p>전 세계 개발자들이 스타를 누른 GitHub 명작,<br>아이디어는 이제 당신의 차례입니다 - {{ today }}</p>
+      </div>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="/about" title="사이트 소개"><i class="fas fa-info-circle"></i> 소개</a></li>
+          {% if current_user.is_authenticated %}
+            <li><a href="/bookmarks" title="내 북마크"><i class="fas fa-bookmark"></i> 내 북마크</a></li>
+            <li><a href="/logout" title="로그아웃"><i class="fas fa-sign-out-alt"></i> 로그아웃</a></li>
+          {% else %}
+            <li><a href="/login" title="로그인"><i class="fas fa-sign-in-alt"></i> 로그인</a></li>
+            <li><a href="/register" class="register-btn" title="회원가입"><i class="fas fa-user-plus"></i> 회원가입</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    {% for repo in repos %}
+    <section class="card">
+      <h2><a href="{{ repo.link }}" target="_blank">{{ repo.name }}</a></h2>
+      <div class="stars-container">
+        <span class="stars"><i class="fas fa-star"></i> {{ repo.stars }}</span>
+      </div>
+      <div class="summary-section">
+        <p><strong class="summary-label">요약:</strong> {{ repo.summary }}</p>
+        <p><strong class="feature-label">기능:</strong> {{ repo.feature }}</p>
+      </div>
+      <pre><code>{{ repo.code }}</code></pre>
+      <div class="card-actions">
+        {% if current_user.is_authenticated %}
+          {% if repo.bookmarked %}
+            <button class="bookmark-btn remove-bookmark" data-id="{{ repo.bookmark_id }}">
+              <i class="fas fa-bookmark"></i> 북마크 삭제
+            </button>
+          {% else %}
+            <button class="bookmark-btn add-bookmark" data-name="{{ repo.name }}">
+              <i class="far fa-bookmark"></i> 북마크 추가
+            </button>
+          {% endif %}
+          
+          <button class="comment-toggle" data-repo-id="{{ repo.id }}">
+            <i class="fas fa-comments"></i> 댓글 <span class="comment-count">{{ repo.comment_count }}</span>
+          </button>
+        {% else %}
+          <button class="bookmark-btn need-login">
+            <i class="far fa-bookmark"></i> 북마크
+          </button>
+          <button class="comment-toggle need-login">
+            <i class="fas fa-comments"></i> 댓글
+          </button>
+        {% endif %}
+      </div>
+      
+      <!-- 접이식 댓글 섹션 -->
+      {% if current_user.is_authenticated %}
+      <div class="comments-section" style="display: none;" id="comments-{{ repo.id }}">
+        <div class="comments-list">
+          <!-- 댓글은 JavaScript로 동적 로드됩니다 -->
+          <div class="loading-comments">댓글을 불러오는 중...</div>
+        </div>
+        
+        <div class="comment-form-container">
+          <form class="comment-form" data-repo-id="{{ repo.id }}">
+            <textarea placeholder="의견이나 질문을 남겨보세요..." required></textarea>
+            <button type="submit">댓글 작성</button>
+          </form>
+        </div>
+      </div>
+      {% endif %}
+    </section>
+    {% endfor %}
+  </main>
+  <footer>
+    <p>&copy; 깃하이라이트 2025 | <a href="https://github.com" target="_blank">GitHub</a>에서 발견된 보석들</p>
+  </footer>
+  
+  <!-- 위로 가기 버튼 -->
+  <button id="back-to-top" title="맨 위로 이동" style="display: none;"><i class="fas fa-arrow-up"></i></button>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 햄버거 메뉴 토글
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mainNav = document.querySelector('.main-nav');
+      
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          mainNav.classList.toggle('active');
+          menuToggle.classList.toggle('active');
+        });
+      }
+      
+      // 스크롤 이벤트 처리
+      const header = document.querySelector('header');
+      
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+        
+        // 위로 가기 버튼 표시/숨김
+        const backToTopButton = document.getElementById("back-to-top");
+        if (window.scrollY > 300) {
+          backToTopButton.style.display = "block";
+        } else {
+          backToTopButton.style.display = "none";
+        }
+      });
+      
+      // 다크모드/라이트모드 감지 및 처리
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark-mode');
+      }
+      
+      // 로그인 필요 북마크 버튼 클릭 이벤트
+      document.querySelectorAll('.need-login').forEach(btn => {
+        btn.addEventListener('click', function() {
+          alert('북마크 기능을 사용하려면 로그인이 필요합니다.');
+          window.location.href = '/login';
+        });
+      });
+      
+      // 북마크 추가 버튼 클릭 이벤트
+      document.querySelectorAll('.add-bookmark').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const repoName = this.dataset.name;
+          const button = this;
+          
+          fetch('/add_bookmark', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ repo_name: repoName })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              // 버튼 상태 변경
+              button.innerHTML = '<i class="fas fa-bookmark"></i> 북마크 삭제';
+              button.classList.remove('add-bookmark');
+              button.classList.add('remove-bookmark');
+              button.dataset.id = data.bookmark_id;
+              
+              // 새 이벤트 리스너 추가 필요
+              setupRemoveListener(button);
+              
+              alert('북마크에 추가되었습니다.');
+            } else {
+              alert(data.message || '오류가 발생했습니다.');
+            }
+          })
+          .catch(error => {
+            console.error('북마크 추가 오류:', error);
+            alert('북마크 추가 중 오류가 발생했습니다.');
+          });
+        });
+      });
+      
+      // 북마크 삭제 버튼 클릭 이벤트
+      function setupRemoveListener(button) {
+        button.addEventListener('click', function() {
+          const bookmarkId = this.dataset.id;
+          const button = this;
+          
+          fetch(`/bookmark/${bookmarkId}`, {
+            method: 'DELETE'
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              // 버튼 상태 변경
+              button.innerHTML = '<i class="far fa-bookmark"></i> 북마크 추가';
+              button.classList.remove('remove-bookmark');
+              button.classList.add('add-bookmark');
+              button.dataset.name = button.closest('.card').querySelector('h2 a').textContent;
+              delete button.dataset.id;
+              
+              alert('북마크가 삭제되었습니다.');
+            } else {
+              alert(data.message || '오류가 발생했습니다.');
+            }
+          })
+          .catch(error => {
+            alert('북마크 삭제 중 오류가 발생했습니다.');
+          });
+        });
+      }
+      
+      document.querySelectorAll('.remove-bookmark').forEach(setupRemoveListener);
+      
+      // 댓글 토글 기능
+      document.querySelectorAll('.comment-toggle').forEach(button => {
+        if (!button.classList.contains('need-login')) {
+          const repoId = button.dataset.repoId;
+          const commentsSection = document.getElementById(`comments-${repoId}`);
+          
+          button.addEventListener('click', function() {
+            if (commentsSection.style.display === 'none') {
+              // 댓글 섹션 열기
+              commentsSection.style.display = 'block';
+              loadComments(repoId);
+            } else {
+              // 댓글 섹션 닫기
+              commentsSection.style.display = 'none';
+            }
+          });
+        }
+      });
+      
+      // 댓글 로딩 함수
+      function loadComments(repoId) {
+        const commentsSection = document.getElementById(`comments-${repoId}`);
+        const commentsList = commentsSection.querySelector('.comments-list');
+        
+        // 이미 로딩된 경우 스킵
+        if (!commentsList.querySelector('.loading-comments')) {
+          return;
+        }
+        
+        fetch(`/comments/${repoId}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              updateCommentCount(repoId, data.comments.length);
+              
+              commentsList.innerHTML = '';
+              
+              if (data.comments.length === 0) {
+                commentsList.innerHTML = '<div class="no-comments">아직 댓글이 없습니다. 첫 댓글을 작성해보세요!</div>';
+              } else {
+                data.comments.forEach(comment => {
+                  const commentElement = createCommentElement(comment);
+                  commentsList.appendChild(commentElement);
+                });
+              }
+            } else {
+              commentsList.innerHTML = '<div class="comment-error">댓글을 불러오는 중 오류가 발생했습니다.</div>';
+              console.error('댓글 로딩 오류:', data.message);
+            }
+          })
+          .catch(error => {
+            commentsList.innerHTML = '<div class="comment-error">댓글을 불러오는 중 오류가 발생했습니다.</div>';
+            console.error('댓글 로딩 중 오류:', error);
+          });
+      }
+      
+      // 댓글 추가 이벤트
+      document.querySelectorAll('.comment-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const repoId = this.dataset.repoId;
+          const textarea = this.querySelector('textarea');
+          const content = textarea.value.trim();
+          
+          if (content.length < 2) {
+            alert('댓글은 최소 2자 이상이어야 합니다.');
+            return;
+          }
+          
+          fetch('/comments', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              repo_id: repoId,
+              content: content
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              // 성공적으로 댓글 추가
+              const commentsList = document.getElementById(`comments-${repoId}`).querySelector('.comments-list');
+              
+              // 첫 댓글인 경우 처리
+              if (commentsList.querySelector('.no-comments')) {
+                commentsList.innerHTML = '';
+              }
+              
+              // 새 댓글 추가
+              const commentElement = createCommentElement(data.comment);
+              commentsList.appendChild(commentElement);
+              
+              // 댓글 수 업데이트
+              const currentCount = parseInt(document.querySelector(`.comment-toggle[data-repo-id="${repoId}"] .comment-count`).textContent);
+              updateCommentCount(repoId, currentCount + 1);
+              
+              // 입력 필드 초기화
+              textarea.value = '';
+            } else {
+              alert('댓글 작성 중 오류가 발생했습니다: ' + data.message);
+            }
+          })
+          .catch(error => {
+            console.error('댓글 작성 중 오류:', error);
+            alert('댓글 작성 중 오류가 발생했습니다.');
+          });
+        });
+      });
+      
+      // 댓글 요소 생성 함수
+      function createCommentElement(comment) {
+        const commentDiv = document.createElement('div');
+        commentDiv.className = 'comment-item';
+        commentDiv.dataset.id = comment.id;
+        
+        // 현재 사용자 ID (서버에서 렌더링 시 값이 채워짐)
+        const currentUserId = {{ current_user.id if current_user.is_authenticated else 0 }};
+        
+        const isMyComment = comment.user_id == currentUserId;
+        
+        commentDiv.innerHTML = `
+          <div class="comment-header">
+            <span class="comment-author">${comment.username}</span>
+            <span class="comment-date">${comment.created_at}</span>
+            ${isMyComment ? '<button class="delete-comment"><i class="fas fa-trash-alt"></i></button>' : ''}
+          </div>
+          <div class="comment-content">${escapeHtml(comment.content)}</div>
+        `;
+        
+        // 내 댓글이면 삭제 기능 추가
+        if (isMyComment) {
+          const deleteBtn = commentDiv.querySelector('.delete-comment');
+          deleteBtn.addEventListener('click', function() {
+            if (confirm('정말 이 댓글을 삭제하시겠습니까?')) {
+              deleteComment(comment.id, comment.repo_id);
+            }
+          });
+        }
+        
+        return commentDiv;
+      }
+      
+      // 댓글 삭제 함수
+      function deleteComment(commentId, repoId) {
+        fetch(`/comments/${commentId}`, {
+          method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            // 댓글 요소 삭제
+            const commentElement = document.querySelector(`.comment-item[data-id="${commentId}"]`);
+            commentElement.remove();
+            
+            // 댓글 수 업데이트
+            const commentsList = document.getElementById(`comments-${repoId}`).querySelector('.comments-list');
+            const comments = commentsList.querySelectorAll('.comment-item');
+            
+            updateCommentCount(repoId, comments.length);
+            
+            // 댓글이 없는 경우 메시지 표시
+            if (comments.length === 0) {
+              commentsList.innerHTML = '<div class="no-comments">아직 댓글이 없습니다. 첫 댓글을 작성해보세요!</div>';
+            }
+          } else {
+            alert('댓글 삭제 중 오류가 발생했습니다: ' + data.message);
+          }
+        })
+        .catch(error => {
+          console.error('댓글 삭제 중 오류:', error);
+          alert('댓글 삭제 중 오류가 발생했습니다.');
+        });
+      }
+      
+      // 댓글 수 업데이트 함수
+      function updateCommentCount(repoId, count) {
+        const countElement = document.querySelector(`.comment-toggle[data-repo-id="${repoId}"] .comment-count`);
+        countElement.textContent = count;
+      }
+      
+      // HTML 이스케이프 함수
+      function escapeHtml(unsafe) {
+        return unsafe
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+      
+      // 위로 가기 버튼 클릭 이벤트
+      const backToTopButton = document.getElementById("back-to-top");
+      backToTopButton.addEventListener("click", function() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    });
+  </script>
+</body>
+</html>

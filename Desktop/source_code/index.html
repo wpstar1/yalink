@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 급등주 분석머신 - 테마별 종목 실시간 포착 | 주식투자 무료상담</title>
+    
+    <!-- SEO 메타태그 -->
+    <meta name="description" content="AI 기술로 급등주를 미리 포착하는 분석머신! 테마별 종목 실시간 분석, 매수 타이밍 알림, 개인 맞춤형 포트폴리오 제공. 91.7% 적중률 달성! 지금 무료 상담 신청하세요.">
+    <meta name="keywords" content="AI 급등주, 주식 분석, 테마주, 급등주 포착, 주식 투자, 매수 타이밍, 포트폴리오, 주식 상담, 투자 전략, 종목 추천, 주식 알림, 투자 컨설팅">
+    <meta name="author" content="AI 급등주 분석머신">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="language" content="ko">
+    <meta name="revisit-after" content="1 days">
+    
+    <!-- 오픈그래프 메타태그 -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI 급등주 분석머신 - 테마별 종목 실시간 포착">
+    <meta property="og:description" content="AI 기술로 급등주를 미리 포착! 91.7% 적중률 달성한 AI 분석머신으로 테마별 종목 실시간 분석, 매수 타이밍 알림 서비스. 지금 무료 상담 신청하세요!">
+    <meta property="og:image" content="https://i.ibb.co/6J8Lgcts/Image-fx.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://jhjg-ten.vercel.app">
+    <meta property="og:site_name" content="AI 급등주 분석머신">
+    <meta property="og:locale" content="ko_KR">
+    
+    <!-- 트위터 카드 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI 급등주 분석머신 - 테마별 종목 실시간 포착">
+    <meta name="twitter:description" content="AI 기술로 급등주를 미리 포착! 91.7% 적중률 달성한 AI 분석머신으로 테마별 종목 실시간 분석, 매수 타이밍 알림 서비스.">
+    <meta name="twitter:image" content="https://i.ibb.co/6J8Lgcts/Image-fx.png">
+    
+    <!-- 추가 SEO 태그 -->
+    <meta name="theme-color" content="#00d4aa">
+    <meta name="msapplication-TileColor" content="#00d4aa">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="AI 급등주 분석머신">
+    
+    <!-- 구조화된 데이터 (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "AI 급등주 분석머신",
+      "description": "AI 기술을 활용한 테마별 급등주 분석 및 투자 상담 서비스",
+      "url": "https://jhjg-ten.vercel.app",
+      "image": "https://i.ibb.co/6J8Lgcts/Image-fx.png",
+      "telephone": "상담 신청을 통해 연락",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KR"
+      },
+      "serviceType": "주식 투자 상담",
+      "areaServed": "KR",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "투자 상담 서비스",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI 급등주 분석",
+              "description": "AI 기술을 활용한 테마별 급등주 실시간 분석"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "매수 타이밍 알림",
+              "description": "전문가 매수 타이밍 알림 서비스"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "개인 맞춤형 포트폴리오",
+              "description": "투자성향에 따른 맞춤 포트폴리오 설계"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #1a1a1a;
+            --color-secondary: #ffffff;
+            --color-accent: #00d4aa;
+            --color-danger: #ff4757;
+            --color-success: #2ed573;
+            --color-warning: #ffa502;
+            --color-background: #ffffff;
+            --color-surface: #f8f9fa;
+            --color-border: #e5e5e5;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-highlight: #ff6b35;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --radius: 0.5rem;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--color-primary);
+            color: var(--color-secondary);
+            padding: var(--space-sm) var(--space-lg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+
+        .market-status {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* 새로운 메인 히어로 섹션 */
+        .main-hero {
+            background: 
+                linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%),
+                url('https://i.ibb.co/6J8Lgcts/Image-fx.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--color-secondary);
+            padding: var(--space-xl) var(--space-lg);
+            text-align: center;
+            position: relative;
+        }
+
+        .main-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(1px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+            color: var(--color-accent);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: var(--space-lg);
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--space-md);
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: var(--color-highlight);
+            color: var(--color-secondary);
+            padding: var(--space-md) var(--space-xl);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        /* 기존 컨테이너 수정 */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: var(--space-lg);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .widget {
+            background: var(--color-secondary);
+            border-radius: var(--radius);
+            padding: var(--space-md);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+        }
+
+        .widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+            padding-bottom: var(--space-xs);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .widget-controls {
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .btn {
+            padding: var(--space-xs) var(--space-sm);
+            border: 1px solid var(--color-border);
+            border-radius: calc(var(--radius) / 2);
+            background: var(--color-secondary);
+            color: var(--color-text);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--color-surface);
+        }
+
+        .btn.active {
+            background: var(--color-accent);
+            color: var(--color-secondary);
+            border-color: var(--color-accent);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 280px;
+            margin-top: var(--space-sm);
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .chart-container canvas {
+            max-width: 100% !important;
+            height: 100% !important;
+        }
+
+        .large-chart {
+            grid-column: 1 / -1;
+        }
+
+        .large-chart .chart-container {
+            height: 320px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .metric-card {
+            background: var(--color-secondary);
+            border-radius: var(--radius);
+            padding: var(--space-md);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: var(--space-xs);
+        }
+
+        .metric-label {
+            color: var(--color-text-light);
+            font-size: 0.875rem;
+        }
+
+        .metric-change {
+            margin-top: var(--space-xs);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .positive { color: var(--color-success); }
+        .negative { color: var(--color-danger); }
+
+        .watchlist {
+            background: var(--color-secondary);
+            border-radius: var(--radius);
+            padding: var(--space-md);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--color-border);
+        }
+
+        .watchlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+        }
+
+        .watchlist-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-xs) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .watchlist-item:last-child {
+            border-bottom: none;
+        }
+
+        .stock-symbol {
+            font-weight: 600;
+        }
+
+        .stock-price {
+            text-align: right;
+        }
+
+        .news-feed {
+            background: var(--color-secondary);
+            border-radius: var(--radius);
+            padding: var(--space-md);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--color-border);
+        }
+
+        .news-item {
+            padding: var(--space-xs) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-title {
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: var(--space-xs);
+        }
+
+        .news-time {
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+        }
+
+        .portfolio-summary {
+            background: linear-gradient(135deg, var(--color-accent), #00b894);
+            color: var(--color-secondary);
+            border-radius: var(--radius);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: var(--space-md);
+        }
+
+        .portfolio-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: var(--space-xs);
+        }
+
+        .portfolio-change {
+            font-size: 1.1rem;
+        }
+
+        .ai-insights {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: var(--color-secondary);
+            border-radius: var(--radius);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .ai-insights h3 {
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .indicator-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-top: var(--space-sm);
+        }
+
+        .indicator-btn {
+            padding: var(--space-xs);
+            font-size: 0.75rem;
+            border-radius: calc(var(--radius) / 2);
+        }
+
+        /* 문의 양식 스타일 */
+        .contact-section {
+            background: var(--color-surface);
+            padding: var(--space-xl) var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: var(--space-md);
+            color: var(--color-primary);
+        }
+
+        .contact-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: var(--space-lg);
+            color: var(--color-text-light);
+        }
+
+        .contact-form {
+            background: var(--color-secondary);
+            padding: var(--space-lg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+            color: var(--color-text);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 1px solid var(--color-border);
+            border-radius: calc(var(--radius) / 2);
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-top: var(--space-xs);
+        }
+
+        .form-radio {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .form-checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            margin-top: var(--space-xs);
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .submit-button {
+            width: 100%;
+            background: var(--color-highlight);
+            color: var(--color-secondary);
+            padding: var(--space-md);
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: var(--space-md);
+        }
+
+        .submit-button:hover {
+            background: #e55a2b;
+            transform: translateY(-1px);
+        }
+
+        /* 기능 소개 섹션 */
+        .features-section {
+            padding: var(--space-xl) var(--space-lg);
+            background: var(--color-background);
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: var(--space-lg);
+            color: var(--color-primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .feature-card {
+            background: var(--color-secondary);
+            padding: var(--space-lg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--color-accent);
+            margin-bottom: var(--space-md);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: var(--space-sm);
+            color: var(--color-primary);
+        }
+
+        .feature-description {
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        /* 사용자 후기 섹션 */
+        .testimonials-section {
+            background: var(--color-surface);
+            padding: var(--space-xl) var(--space-lg);
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonials-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: var(--space-lg);
+            color: var(--color-primary);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .testimonial-card {
+            background: var(--color-secondary);
+            padding: var(--space-lg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: var(--space-md);
+            color: var(--color-text);
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: var(--space-sm);
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-radio-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i> AI 급등주 분석머신
+            </div>
+            <div class="market-status">
+                <div class="status-indicator"></div>
+                <span>실시간 급등주 포착!</span>
+                <span id="current-time"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 새로운 메인 히어로 섹션 -->
+    <section class="main-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">🎯 AI 기술로 움직이는 주식시장!</h1>
+            <h2 class="hero-subtitle">AI 기술을 활용한<br>테마별 급등주 분석머신</h2>
+            <p class="hero-description">
+                주식 투자는? 빠른 정보가 수익!<br>
+                <strong>실시간 급등주 포착!</strong><br>
+                테마별 종목 실시간 포착 서비스, 지금 무료 체험하세요!
+            </p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">📊</div>
+                    <div class="stat-label">카카오, 삼성전자, 셀트리온, 현대차까지</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">84,957명</div>
+                    <div class="stat-label">📈 누적 구독자 돌파!</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">✅</div>
+                    <div class="stat-label">종목 발굴, 매수 타이밍, 수익전략까지 AI가 자동으로!</div>
+                </div>
+            </div>
+
+            <div style="margin: var(--space-lg) 0;">
+                <h3 style="font-size: 1.5rem; margin-bottom: var(--space-md);">🔥 보증 문구</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">+2,144.65%</div>
+                        <div class="stat-label">최근 3개월 누적 수익률</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">91.7%</div>
+                        <div class="stat-label">AI 종목 적중률 달성</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">🏆</div>
+                        <div class="stat-label">누적 수익률 1위 / K-주식 공모전 대상 수상</div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#contact" class="cta-button">
+                🚀 지금 무료 체험 신청하기
+            </a>
+        </div>
+    </section>
+
+    <!-- 기능 소개 섹션 -->
+    <section class="features-section">
+        <div class="features-container">
+            <h2 class="features-title">💡 왜 한계절인가요?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">매일 종목 리포트 제공</h3>
+                    <p class="feature-description">AI가 분석한 강력 추천주를 매일 받아보세요</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3 class="feature-title">전문가 매수 타이밍 알림</h3>
+                    <p class="feature-description">언제 살지 정확한 타이밍을 알려드립니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">개인 맞춤형 포트폴리오 설계</h3>
+                    <p class="feature-description">투자성향에 따라 맞춤 포트폴리오를 제공합니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">프리미엄 데이터 무료 제공</h3>
+                    <p class="feature-description">뉴스, 수급, 리포트를 매일 발송해드립니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 기존 차트 대시보드 -->
+    <div class="main-container">
+        <main>
+            <div class="dashboard-grid">
+                <!-- 실시간 주가 차트 -->
+                <div class="widget large-chart">
+                    <div class="widget-header">
+                        <h3 class="widget-title">
+                            <i class="fas fa-chart-candlestick"></i> 실시간 주가 차트
+                        </h3>
+                        <div class="widget-controls">
+                            <button class="btn active" data-timeframe="1D">1일</button>
+                            <button class="btn" data-timeframe="1W">1주</button>
+                            <button class="btn" data-timeframe="1M">1개월</button>
+                            <button class="btn" data-timeframe="1Y">1년</button>
+                        </div>
+                    </div>
+                    <div class="indicator-controls">
+                        <button class="btn indicator-btn" data-indicator="sma">SMA</button>
+                        <button class="btn indicator-btn" data-indicator="ema">EMA</button>
+                        <button class="btn indicator-btn" data-indicator="bollinger">볼린저밴드</button>
+                        <button class="btn indicator-btn" data-indicator="rsi">RSI</button>
+                        <button class="btn indicator-btn" data-indicator="macd">MACD</button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="mainChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- 거래량 차트 -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3 class="widget-title">
+                            <i class="fas fa-chart-bar"></i> 거래량 추이
+                        </h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="volumeChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- 시장 지수 -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3 class="widget-title">
+                            <i class="fas fa-globe"></i> 주요 시장 지수
+                        </h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="marketChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <!-- 포트폴리오 요약 -->
+            <div class="portfolio-summary">
+                <div class="portfolio-value">₩125,430,000</div>
+                <div class="portfolio-change positive">
+                    <i class="fas fa-arrow-up"></i> +2.3% (+2,850,000원)
+                </div>
+                <small>총 포트폴리오 가치</small>
+            </div>
+
+            <!-- 주요 지표 -->
+            <div class="metric-card">
+                <div class="metric-value positive">+1.84%</div>
+                <div class="metric-label">KOSPI</div>
+                <div class="metric-change positive">+44.5pt</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-value negative">-0.52%</div>
+                <div class="metric-label">KOSDAQ</div>
+                <div class="metric-change negative">-4.2pt</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-value positive">+0.73%</div>
+                <div class="metric-label">USD/KRW</div>
+                <div class="metric-change positive">+9.5</div>
+            </div>
+
+            <!-- 관심 종목 -->
+            <div class="watchlist">
+                <div class="watchlist-header">
+                    <h3><i class="fas fa-star"></i> 추천 급등주</h3>
+                </div>
+                <div id="watchlist-items">
+                    <div class="watchlist-item">
+                        <div>
+                            <div class="stock-symbol">삼성전자</div>
+                            <small>005930</small>
+                        </div>
+                        <div class="stock-price">
+                            <div>76,100원</div>
+                            <small class="positive">+1.2%</small>
+                        </div>
+                    </div>
+                    <div class="watchlist-item">
+                        <div>
+                            <div class="stock-symbol">SK하이닉스</div>
+                            <small>000660</small>
+                        </div>
+                        <div class="stock-price">
+                            <div>89,300원</div>
+                            <small class="negative">-0.8%</small>
+                        </div>
+                    </div>
+                    <div class="watchlist-item">
+                        <div>
+                            <div class="stock-symbol">NAVER</div>
+                            <small>035420</small>
+                        </div>
+                        <div class="stock-price">
+                            <div>182,500원</div>
+                            <small class="positive">+2.1%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI 인사이트 -->
+            <div class="ai-insights">
+                <h3>
+                    <i class="fas fa-brain"></i> AI 급등주 분석
+                </h3>
+                <div id="ai-predictions">
+                    <p><strong>오늘의 추천:</strong> 기술주 매수 신호 감지</p>
+                    <p><strong>시장 심리:</strong> 강세 지속 (신뢰도: 91.7%)</p>
+                    <p><strong>주요 이슈:</strong> 반도체 업종 주목</p>
+                </div>
+            </div>
+
+            <!-- 실시간 뉴스 -->
+            <div class="news-feed">
+                <h3><i class="fas fa-newspaper"></i> 급등주 뉴스</h3>
+                <div id="news-items">
+                    <div class="news-item">
+                        <div class="news-title">반도체 업종 강세, 메모리 가격 상승 기대</div>
+                        <div class="news-time">5분 전</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">AI 관련주 집중 매수, 테마 급등 예상</div>
+                        <div class="news-time">12분 전</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">2차전지 관련 대장주 강세 지속</div>
+                        <div class="news-time">25분 전</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 사용자 후기 섹션 -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="testimonials-title">📌 실제 사용자 후기도 확인해보세요!</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"AI 추천으로 3개월 만에 200% 수익! 정말 놀라워요. 매수 타이밍까지 알려줘서 초보자도 쉽게 따라할 수 있어요."</p>
+                    <p class="testimonial-author">- 김○○님 (30대, 직장인)</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"급등주를 미리 알 수 있어서 매번 수익을 내고 있습니다. 특히 테마별 분석이 정말 정확해요!"</p>
+                    <p class="testimonial-author">- 박○○님 (40대, 자영업)</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"혼자 투자할 때는 항상 손실이었는데, AI 분석머신 덕분에 안정적으로 수익을 내고 있어요."</p>
+                    <p class="testimonial-author">- 이○○님 (50대, 주부)</p>
+                </div>
+            </div>
+            <p style="font-size: 1.2rem; color: var(--color-primary); font-weight: bold; margin-top: var(--space-lg);">
+                혼자 하지 마세요.<br>
+                AI와 함께 주식 1등 전략, 지금 시작해보세요.
+            </p>
+        </div>
+    </section>
+
+    <!-- 문의 양식 섹션 -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="contact-title">🚀 무료 체험 신청하기</h2>
+            <p class="contact-subtitle">지금 신청하시면 AI 급등주 분석 서비스를 무료로 체험할 수 있습니다!</p>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label class="form-label">1. 이름 *</label>
+                    <input type="text" class="form-input" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">2. 전화번호 *</label>
+                    <input type="tel" class="form-input" name="phone" placeholder="010-0000-0000" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">3. 연령대 *</label>
+                    <div class="form-radio-group">
+                        <label class="form-radio">
+                            <input type="radio" name="age" value="20대" required>
+                            <span>20대</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="age" value="30대" required>
+                            <span>30대</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="age" value="40대" required>
+                            <span>40대</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="age" value="50대" required>
+                            <span>50대</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="age" value="60대" required>
+                            <span>60대</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="age" value="70대" required>
+                            <span>70대</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">4. 금전적 고민 (해당하는 것을 모두 선택해주세요)</label>
+                    <div class="form-checkbox-group">
+                        <label class="form-checkbox">
+                            <input type="checkbox" name="concerns" value="월급으론 부족해서 추가 소득이 필요해요">
+                            <span>(1) 월급으론 부족해서 추가 소득이 필요해요.</span>
+                        </label>
+                        <label class="form-checkbox">
+                            <input type="checkbox" name="concerns" value="고정지출이 커서 돈모으기가 힘들어요">
+                            <span>(2) 고정지출이 커서 돈모으기가 힘들어요.</span>
+                        </label>
+                        <label class="form-checkbox">
+                            <input type="checkbox" name="concerns" value="투자를 해보고 싶은데 경험도 없고 겁이나요">
+                            <span>(3) 투자를 해보고 싶은데 경험도 없고 겁이나요.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">5. 남기고 싶은말</label>
+                    <textarea class="form-input form-textarea" name="message" placeholder="궁금한 점이나 하고 싶은 말씀을 자유롭게 적어주세요."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">
+                    📞 무료 상담 신청하기
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // 시간 업데이트
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = 
+                now.toLocaleTimeString('ko-KR');
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // 차트 설정
+        Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif';
+        Chart.defaults.color = '#666666';
+        Chart.defaults.maintainAspectRatio = false;
+        Chart.defaults.responsive = true;
+
+        // 실시간 주가 데이터 생성 함수
+        function generateStockData(days = 30) {
+            const data = [];
+            let price = 76000;
+            const now = new Date();
+            
+            for (let i = days; i >= 0; i--) {
+                const date = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+                const change = (Math.random() - 0.5) * 2000;
+                price += change;
+                price = Math.max(price, 50000);
+                
+                data.push({
+                    x: date,
+                    y: Math.round(price)
+                });
+            }
+            return data;
+        }
+
+        // 거래량 데이터 생성
+        function generateVolumeData(days = 30) {
+            const data = [];
+            const now = new Date();
+            
+            for (let i = days; i >= 0; i--) {
+                const date = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+                const volume = Math.floor(Math.random() * 50000000) + 10000000;
+                
+                data.push({
+                    x: date,
+                    y: volume
+                });
+            }
+            return data;
+        }
+
+        // 메인 차트 생성
+        const mainCtx = document.getElementById('mainChart').getContext('2d');
+        const mainChart = new Chart(mainCtx, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: '삼성전자 (005930)',
+                    data: generateStockData(),
+                    borderColor: '#00d4aa',
+                    backgroundColor: 'rgba(0, 212, 170, 0.1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            displayFormats: {
+                                day: 'MM/dd'
+                            }
+                        },
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value.toLocaleString() + '원';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y.toLocaleString() + '원';
+                            }
+                        }
+                    }
+                },
+                animation: {
+                    duration: 1000
+                }
+            }
+        });
+
+        // 거래량 차트
+        const volumeCtx = document.getElementById('volumeChart').getContext('2d');
+        const volumeChart = new Chart(volumeCtx, {
+            type: 'bar',
+            data: {
+                datasets: [{
+                    label: '거래량',
+                    data: generateVolumeData(),
+                    backgroundColor: 'rgba(255, 159, 64, 0.7)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            displayFormats: {
+                                day: 'MM/dd'
+                            }
+                        },
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return (value / 1000000).toFixed(0) + 'M';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // 시장 지수 차트
+        const marketCtx = document.getElementById('marketChart').getContext('2d');
+        const marketChart = new Chart(marketCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['KOSPI', 'KOSDAQ', 'S&P 500', 'NASDAQ'],
+                datasets: [{
+                    data: [1.84, -0.52, 0.89, 1.23],
+                    backgroundColor: [
+                        '#00d4aa',
+                        '#ff4757',
+                        '#5352ed',
+                        '#ffa502'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            usePointStyle: true
+                        }
+                    }
+                }
+            }
+        });
+
+        // 기간 선택 기능
+        document.querySelectorAll('[data-timeframe]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('[data-timeframe]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const timeframe = this.dataset.timeframe;
+                let days;
+                switch(timeframe) {
+                    case '1D': days = 1; break;
+                    case '1W': days = 7; break;
+                    case '1M': days = 30; break;
+                    case '1Y': days = 365; break;
+                }
+                
+                mainChart.data.datasets[0].data = generateStockData(days);
+                mainChart.update();
+                
+                volumeChart.data.datasets[0].data = generateVolumeData(days);
+                volumeChart.update();
+            });
+        });
+
+        // 기술적 지표 버튼
+        document.querySelectorAll('[data-indicator]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const indicator = this.dataset.indicator;
+                
+                if (this.classList.contains('active')) {
+                    addIndicator(indicator);
+                } else {
+                    removeIndicator(indicator);
+                }
+            });
+        });
+
+        function addIndicator(type) {
+            const baseData = mainChart.data.datasets[0].data;
+            let indicatorData = [];
+            
+            switch(type) {
+                case 'sma':
+                    indicatorData = calculateSMA(baseData, 20);
+                    mainChart.data.datasets.push({
+                        label: 'SMA (20)',
+                        data: indicatorData,
+                        borderColor: '#ff4757',
+                        backgroundColor: 'transparent',
+                        borderWidth: 1,
+                        pointRadius: 0
+                    });
+                    break;
+                case 'ema':
+                    indicatorData = calculateEMA(baseData, 12);
+                    mainChart.data.datasets.push({
+                        label: 'EMA (12)',
+                        data: indicatorData,
+                        borderColor: '#5352ed',
+                        backgroundColor: 'transparent',
+                        borderWidth: 1,
+                        pointRadius: 0
+                    });
+                    break;
+            }
+            
+            mainChart.update();
+        }
+
+        function removeIndicator(type) {
+            const datasets = mainChart.data.datasets;
+            for (let i = datasets.length - 1; i >= 0; i--) {
+                const label = datasets[i].label;
+                if ((type === 'sma' && label.includes('SMA')) ||
+                    (type === 'ema' && label.includes('EMA'))) {
+                    datasets.splice(i, 1);
+                }
+            }
+            mainChart.update();
+        }
+
+        function calculateSMA(data, period) {
+            const sma = [];
+            for (let i = period - 1; i < data.length; i++) {
+                const sum = data.slice(i - period + 1, i + 1).reduce((a, b) => a + b.y, 0);
+                sma.push({
+                    x: data[i].x,
+                    y: sum / period
+                });
+            }
+            return sma;
+        }
+
+        function calculateEMA(data, period) {
+            const ema = [];
+            const multiplier = 2 / (period + 1);
+            
+            if (data.length === 0) return ema;
+            
+            ema.push({x: data[0].x, y: data[0].y});
+            
+            for (let i = 1; i < data.length; i++) {
+                const emaValue = (data[i].y * multiplier) + (ema[i-1].y * (1 - multiplier));
+                ema.push({
+                    x: data[i].x,
+                    y: emaValue
+                });
+            }
+            
+            return ema;
+        }
+
+        // 실시간 데이터 업데이트 시뮬레이션
+        setInterval(() => {
+            const lastData = mainChart.data.datasets[0].data;
+            const lastPrice = lastData[lastData.length - 1].y;
+            const change = (Math.random() - 0.5) * 1000;
+            const newPrice = Math.max(lastPrice + change, 50000);
+            
+            lastData.push({
+                x: new Date(),
+                y: Math.round(newPrice)
+            });
+            
+            if (lastData.length > 30) {
+                lastData.shift();
+            }
+            
+            mainChart.update('none');
+        }, 5000);
+
+        // AI 예측 업데이트
+        setInterval(() => {
+            const predictions = [
+                "AI 관련주 급등 예상",
+                "2차전지 대장주 매수 신호",
+                "반도체 업종 집중 매수",
+                "바이오 테마주 주목",
+                "메타버스 관련주 상승 예상"
+            ];
+            
+            const moods = ["강세 지속", "급등 예상", "매수 신호", "상승 전환"];
+            const issues = [
+                "AI 테마주 급등",
+                "2차전지 대장주 강세",
+                "반도체 업종 주목",
+                "메타버스 관련주 상승",
+                "바이오 테마 급등"
+            ];
+            
+            const aiInsights = document.getElementById('ai-predictions');
+            const confidence = Math.floor(Math.random() * 10) + 90;
+            
+            aiInsights.innerHTML = `
+                <p><strong>오늘의 추천:</strong> ${predictions[Math.floor(Math.random() * predictions.length)]}</p>
+                <p><strong>시장 심리:</strong> ${moods[Math.floor(Math.random() * moods.length)]} (신뢰도: ${confidence}%)</p>
+                <p><strong>주요 이슈:</strong> ${issues[Math.floor(Math.random() * issues.length)]}</p>
+            `;
+        }, 15000);
+
+        // 문의 양식 제출 처리
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 폼 데이터 수집
+            const formData = new FormData(this);
+            const data = {};
+            
+            // 체크박스 데이터 처리
+            const concerns = [];
+            formData.getAll('concerns').forEach(concern => {
+                concerns.push(concern);
+            });
+            
+            data.id = Date.now(); // 고유 ID
+            data.name = formData.get('name');
+            data.phone = formData.get('phone');
+            data.age = formData.get('age');
+            data.concerns = concerns;
+            data.message = formData.get('message');
+            data.submitDate = new Date().toISOString();
+            data.status = '미처리'; // 처리 상태
+            
+            // 로컬 스토리지에 저장
+            const existingData = JSON.parse(localStorage.getItem('consultations') || '[]');
+            existingData.push(data);
+            localStorage.setItem('consultations', JSON.stringify(existingData));
+            
+            // 성공 메시지 표시
+            alert('문의가 성공적으로 접수되었습니다!\n곧 전문 상담사가 연락드리겠습니다.');
+            
+            // 폼 초기화
+            this.reset();
+            
+            console.log('문의 데이터:', data);
+        });
+
+        // 부드러운 스크롤
+        document.querySelector('a[href="#contact"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('contact').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
